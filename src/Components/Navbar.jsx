@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { label: "HOME", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/service" },
-  { label: "CONTACT", to: "/contact" },
+  { label: "CONTACT", to: "/contact-us" },
 ];
 
 function NavLinkItem({ label, to, onClick, mobile }) {

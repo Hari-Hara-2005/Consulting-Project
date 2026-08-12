@@ -1,0 +1,302 @@
+import { useState } from "react";
+import PageTitleBanner from "../Components/Pagetitlebanner";
+import {
+  Phone,
+  MessageSquare,
+  MapPin,
+  ArrowUp,
+  ExternalLink,
+  Navigation,
+  Star,
+  Info,
+} from "lucide-react";
+import Footer from "../Components/Footer";
+
+const THEME = {
+  primary: "#063231",
+  dark: "#111111",
+  cardBg: "#F5F6F5",
+  iconBg: "#FBE4DA",
+  accent: "#F75709",
+  bg: "#F3F4F2",
+};
+
+const CONTACT_ITEMS = [
+  {
+    icon: Phone,
+    label: "Phone number",
+    value: "+44 204 577 0077",
+  },
+  {
+    icon: MessageSquare,
+    label: "Email address",
+    value: "prozen@gmail.com",
+  },
+  {
+    icon: MapPin,
+    label: "Office Address",
+    value: "Washington Ave, NY",
+  },
+];
+
+// Replace with the real WhatsApp number that should receive contact form messages
+// Format: countrycode + number, no + or spaces
+const CONTACT_WHATSAPP_NUMBER = "9952857016";
+
+const SUBJECT_OPTIONS = [
+  "General inquiry",
+  "Booking a service",
+  "Support",
+  "Partnership",
+  "Other",
+];
+
+// Map location shown in the overlay card / embed
+const LOCATION = {
+  name: "BNS Center",
+  address: "Sector 7, Dhaka 1230",
+  rating: 4.0,
+  reviewCount: "6,406",
+  mapQuery: "BNS Center, Sector 7, Dhaka 1230",
+};
+
+const Contact = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (field) => (e) => {
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const isValid =
+    form.name.trim() &&
+    form.email.trim() &&
+    form.subject.trim() &&
+    form.message.trim();
+
+  const handleSend = () => {
+    if (!isValid) return;
+
+    const text =
+      `*New Contact Form Message*\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Subject: ${form.subject}\n\n` +
+      `Message:\n${form.message}`;
+
+    const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(waLink, "_blank");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
+    LOCATION.mapQuery,
+  )}&output=embed`;
+
+  const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    LOCATION.mapQuery,
+  )}`;
+
+  const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    LOCATION.mapQuery,
+  )}`;
+
+  return (
+    <section>
+      <PageTitleBanner
+        title="Contact Us"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Contact Us", href: "#", active: true },
+        ]}
+      />
+
+      {/* Contact info cards */}
+      <div className="w-full bg-white py-12 px-6 md:px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {CONTACT_ITEMS.map(({ icon: Icon, label, value }) => (
+            <div
+              key={label}
+              className="rounded-2xl p-6 md:p-7"
+              style={{ backgroundColor: THEME.cardBg }}
+            >
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-8"
+                style={{ backgroundColor: THEME.iconBg }}
+              >
+                <Icon className="w-6 h-6" style={{ color: THEME.primary }} />
+              </div>
+
+              <p className="text-sm mb-1.5" style={{ color: THEME.primary }}>
+                {label}
+              </p>
+              <p
+                className="text-lg font-bold uppercase tracking-wide"
+                style={{ color: THEME.primary }}
+              >
+                {value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact form + map */}
+      <section style={{ backgroundColor: THEME.bg }}>
+        <div className="px-6 py-16 md:py-20">
+          <div className="max-w-2xl mx-auto text-center">
+            <p
+              className="text-xs md:text-sm font-bold tracking-wide uppercase mb-3"
+              style={{ color: THEME.accent }}
+            >
+              Contact us
+            </p>
+            <h2
+              className="uppercase font-black leading-tight text-3xl md:text-4xl mb-10"
+              style={{ color: THEME.dark }}
+            >
+              Have questions?
+              <br />
+              Contact us!
+            </h2>
+
+            <div className="space-y-4 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={handleChange("name")}
+                  placeholder="Your name"
+                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500"
+                />
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange("email")}
+                  placeholder="Email address"
+                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500"
+                />
+              </div>
+
+              <select
+                value={form.subject}
+                onChange={handleChange("subject")}
+                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none appearance-none"
+                style={{ color: form.subject ? THEME.dark : "#6b7280" }}
+              >
+                <option value="" disabled>
+                  Select subject
+                </option>
+                {SUBJECT_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt} style={{ color: THEME.dark }}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+
+              <textarea
+                value={form.message}
+                onChange={handleChange("message")}
+                placeholder="Type your message"
+                rows={6}
+                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none resize-y placeholder:text-gray-500"
+              />
+            </div>
+
+            <button
+              onClick={handleSend}
+              disabled={!isValid}
+              className="mt-8 uppercase text-sm font-bold text-white px-8 py-3.5 rounded-md transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
+              style={{ backgroundColor: THEME.accent }}
+            >
+              Send message here
+            </button>
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="relative w-full h-[420px] md:h-[480px]">
+          <iframe
+            title="Location map"
+            src={mapEmbedSrc}
+            className="absolute inset-0 w-full h-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          {/* Location card overlay */}
+          <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg px-4 py-3 max-w-xs">
+            <div className="flex items-start justify-between gap-2">
+              <p className="text-sm font-bold" style={{ color: THEME.dark }}>
+                {LOCATION.name}
+              </p>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <a
+                  href={mapLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open in Google Maps"
+                  className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors duration-200"
+                >
+                  <ExternalLink
+                    className="w-3 h-3"
+                    style={{ color: THEME.dark }}
+                  />
+                </a>
+                <a
+                  href={directionsLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Get directions"
+                  className="w-6 h-6 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
+                  style={{ backgroundColor: THEME.accent }}
+                >
+                  <Navigation className="w-3 h-3 text-white" />
+                </a>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-0.5">{LOCATION.address}</p>
+            <div className="flex items-center gap-1 mt-1.5 text-xs">
+              <span className="font-medium" style={{ color: THEME.dark }}>
+                {LOCATION.rating.toFixed(1)}
+              </span>
+              <Star
+                className="w-3 h-3"
+                style={{ color: THEME.accent, fill: THEME.accent }}
+              />
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                ({LOCATION.reviewCount})
+              </a>
+              <Info className="w-3 h-3 text-gray-400 ml-0.5" />
+            </div>
+          </div>
+
+          {/* Scroll to top */}
+          <button
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+            className="absolute bottom-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition-opacity duration-200"
+            style={{ backgroundColor: THEME.accent }}
+          >
+            <ArrowUp className="w-4 h-4 text-white" />
+          </button>
+        </div>
+      </section>
+      <Footer />
+    </section>
+  );
+};
+
+export default Contact;
