@@ -156,6 +156,18 @@ export default function Hero() {
             Our team prioritizes usability and accessibility to ensure that
             every visitor enjoys a seamless intuitive.
           </Typography>
+          
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.75)",
+              fontSize: "1rem",
+              mt: 3,
+              maxWidth: 420,
+              lineHeight: 1.6,
+            }}
+          >
+            Kudanthai Infotech 
+          </Typography>
 
           <Button
             variant="contained"
