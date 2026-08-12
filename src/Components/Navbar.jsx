@@ -11,11 +11,15 @@ const NAV_ITEMS = [
   { label: "CONTACT", to: "/contact-us" },
 ];
 
-function NavLinkItem({ label, to, onClick, mobile }) {
+function NavLinkItem({ label, to, onClick, mobile, delay }) {
   return (
     <Link
       to={to}
       onClick={onClick}
+      data-aos={mobile ? undefined : "fade-down"}
+      data-aos-delay={mobile ? undefined : delay}
+      data-aos-duration="500"
+      data-aos-once="true"
       className={
         mobile
           ? `
@@ -51,7 +55,12 @@ function NavLinkItem({ label, to, onClick, mobile }) {
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
+    <div
+      className="flex items-center gap-2"
+      data-aos="fade-right"
+      data-aos-duration="600"
+      data-aos-once="true"
+    >
       <div
         className="
           relative
@@ -164,8 +173,13 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-2 lg:flex">
-            {NAV_ITEMS.map((item) => (
-              <NavLinkItem key={item.label} label={item.label} to={item.to} />
+            {NAV_ITEMS.map((item, i) => (
+              <NavLinkItem
+                key={item.label}
+                label={item.label}
+                to={item.to}
+                delay={150 + i * 60}
+              />
             ))}
           </div>
 
@@ -173,6 +187,10 @@ export default function Navbar() {
           <Link to="/service-booking">
             {" "}
             <button
+              data-aos="fade-left"
+              data-aos-duration="600"
+              data-aos-delay="200"
+              data-aos-once="true"
               className="
               hidden
               lg:block

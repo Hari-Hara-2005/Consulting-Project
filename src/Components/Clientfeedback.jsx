@@ -156,13 +156,19 @@ export default function ClientFeedback({
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-end justify-between mb-10 flex-wrap gap-6">
-          <Title
-            align="left"
-            subtitle="TESTIMONIALS"
-            title={<>Client feedback</>}
-          />
+          <div data-aos="fade-right" data-aos-duration="600">
+            <Title
+              align="left"
+              subtitle="TESTIMONIALS"
+              title={<>Client feedback</>}
+            />
+          </div>
           {/* Arrows */}
-          <div className="flex items-center gap-3">
+          <div
+            className="flex items-center gap-3"
+            data-aos="fade-left"
+            data-aos-duration="600"
+          >
             <button
               onClick={goPrev}
               aria-label="Previous testimonials"
@@ -193,6 +199,10 @@ export default function ClientFeedback({
                 key={i}
                 className="shrink-0 px-3"
                 style={{ width: `${slideWidthPct}%` }}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
+                data-aos-duration="600"
+                data-aos-once="true"
               >
                 <TestimonialCard item={item} />
               </div>
@@ -201,7 +211,11 @@ export default function ClientFeedback({
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div
+          className="flex justify-center gap-2 mt-8"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           {Array.from({ length: maxIndex + 1 }).map((_, i) => (
             <button
               key={i}

@@ -8,7 +8,13 @@ import Pricing from "./Pages/Pricing";
 import Faq from "./Pages/Faq";
 import ScrollToTop from "./Components/ScrollToTop";
 import CustomCursor from "./Components/Customcursor";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const App = () => {
+  useEffect(() => {
+    AOS.init({ once: false }); // once: true = only animate on first scroll into view
+  }, []);
   return (
     <BrowserRouter>
       <CustomCursor />

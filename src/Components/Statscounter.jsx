@@ -52,12 +52,15 @@ function useCountUp(target, shouldStart) {
   return value;
 }
 
-function StatItem({ stat, shouldStart, isLast }) {
+function StatItem({ stat, shouldStart, isLast, index }) {
   const value = useCountUp(stat.target, shouldStart);
 
   return (
     <div
       className={`text-center ${!isLast ? "sm:border-r border-gray-300" : ""}`}
+      data-aos="fade-up"
+      data-aos-delay={index * 150}
+      data-aos-duration="700"
     >
       <p className="font-black text-5xl text-[#0d2b26] mb-3 tracking-tight">
         {value}
@@ -96,13 +99,17 @@ export default function StatsCounter() {
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-10" ref={sectionRef}>
-      <div className="bg-[#f4f6f5] rounded-2xl px-10 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0">
+      <div
+        className="bg-[#f4f6f5] rounded-2xl px-10 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0"
+        data-aos="fade-up"
+      >
         {STATS.map((stat, i) => (
           <StatItem
             key={stat.label}
             stat={stat}
             shouldStart={hasAnimated}
             isLast={i === STATS.length - 1}
+            index={i}
           />
         ))}
       </div>

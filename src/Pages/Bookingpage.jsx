@@ -244,10 +244,18 @@ export default function BookingPage() {
       />
       <div className="bg-white flex items-center justify-center p-4 md:p-8">
         {/* Calendar + slots, centered */}
-        <div className="w-full max-w-3xl bg-gray-50 rounded-2xl p-4 md:p-8 lg:p-6 xl:p-8">
+        <div
+          className="w-full max-w-3xl bg-gray-50 rounded-2xl p-4 md:p-8 lg:p-6 xl:p-8"
+          data-aos="fade-up"
+          data-aos-duration="600"
+        >
           <div className="w-full">
             {/* Top bar */}
-            <div className="bg-white rounded-2xl shadow-sm px-5 py-4 lg:px-4 lg:py-3 flex flex-wrap items-center justify-between gap-4 mb-6 lg:mb-4">
+            <div
+              className="bg-white rounded-2xl shadow-sm px-5 py-4 lg:px-4 lg:py-3 flex flex-wrap items-center justify-between gap-4 mb-6 lg:mb-4"
+              data-aos="fade-up"
+              data-aos-duration="500"
+            >
               <div
                 className="flex items-center gap-2 text-sm font-medium"
                 style={{ color: THEME.primary }}
@@ -309,7 +317,12 @@ export default function BookingPage() {
             {viewMode === "calendar" ? (
               <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] lg:grid-cols-[1fr_220px] gap-6 lg:gap-4">
                 {/* Calendar */}
-                <div className="bg-white rounded-2xl shadow-sm p-5 lg:p-4">
+                <div
+                  className="bg-white rounded-2xl shadow-sm p-5 lg:p-4"
+                  data-aos="fade-right"
+                  data-aos-duration="600"
+                  data-aos-delay="100"
+                >
                   <div className="flex items-center justify-between mb-5 lg:mb-3">
                     <button
                       onClick={goPrevMonth}
@@ -397,7 +410,12 @@ export default function BookingPage() {
                 </div>
 
                 {/* Time slots — scrollable list, 11:30 AM to 8:30 PM every 30 minutes */}
-                <div className="bg-white rounded-2xl shadow-sm p-5 lg:p-4 flex flex-col">
+                <div
+                  className="bg-white rounded-2xl shadow-sm p-5 lg:p-4 flex flex-col"
+                  data-aos="fade-left"
+                  data-aos-duration="600"
+                  data-aos-delay="200"
+                >
                   <h3
                     className="font-bold text-base lg:text-sm mb-4 lg:mb-3"
                     style={{ color: THEME.primary }}
@@ -461,7 +479,11 @@ export default function BookingPage() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white rounded-2xl shadow-sm p-5">
+              <div
+                className="bg-white rounded-2xl shadow-sm p-5"
+                data-aos="fade-up"
+                data-aos-duration="500"
+              >
                 <h3
                   className="font-bold text-base mb-4"
                   style={{ color: THEME.primary }}
@@ -521,11 +543,15 @@ export default function BookingPage() {
         {showModal && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center px-4 py-10 mt-16"
-            style={{ backgroundColor: "rgba(6, 50, 49, 0.55)" }}
+            style={{
+              backgroundColor: "rgba(6, 50, 49, 0.55)",
+              animation: "bookingOverlayFadeIn 0.25s ease-out",
+            }}
             onClick={closeModal}
           >
             <div
               className="bg-white rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto p-6 md:p-7 relative shadow-2xl"
+              style={{ animation: "bookingModalPop 0.25s ease-out" }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between mb-1">
@@ -712,6 +738,18 @@ export default function BookingPage() {
           </div>
         )}
       </div>
+
+      <style>{`
+        @keyframes bookingOverlayFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes bookingModalPop {
+          from { opacity: 0; transform: scale(0.95) translateY(8px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+      `}</style>
+
       <Footer />
     </section>
   );

@@ -39,8 +39,6 @@ const CONTACT_ITEMS = [
   },
 ];
 
-// Replace with the real WhatsApp number that should receive contact form messages
-// Format: countrycode + number, no + or spaces
 const CONTACT_WHATSAPP_NUMBER = "9952857016";
 
 const SUBJECT_OPTIONS = [
@@ -51,7 +49,6 @@ const SUBJECT_OPTIONS = [
   "Other",
 ];
 
-// Map location shown in the overlay card / embed
 const LOCATION = {
   name: "BNS Center",
   address: "Sector 7, Dhaka 1230",
@@ -69,7 +66,10 @@ const Contact = () => {
   });
 
   const handleChange = (field) => (e) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    setForm((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+    }));
   };
 
   const isValid =
@@ -88,12 +88,18 @@ const Contact = () => {
       `Subject: ${form.subject}\n\n` +
       `Message:\n${form.message}`;
 
-    const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      text,
+    )}`;
+
     window.open(waLink, "_blank");
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
@@ -110,33 +116,47 @@ const Contact = () => {
 
   return (
     <section>
+      {/* Page Banner */}
       <PageTitleBanner
         title="Contact Us"
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Contact Us", href: "#", active: true },
+          {
+            label: "Contact Us",
+            href: "#",
+            active: true,
+          },
         ]}
       />
 
-      {/* Contact info cards */}
+      {/* Contact Info Cards */}
       <div className="w-full bg-white py-12 px-6 md:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {CONTACT_ITEMS.map(({ icon: Icon, label, value }) => (
+          {CONTACT_ITEMS.map(({ icon: Icon, label, value }, index) => (
             <div
               key={label}
-              className="rounded-2xl p-6 md:p-7"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-delay={index * 150}
+              className="group rounded-2xl p-6 md:p-7 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
               style={{ backgroundColor: THEME.cardBg }}
             >
+              {/* Icon */}
               <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center mb-8"
+                data-aos="zoom-in"
+                data-aos-delay={index * 150 + 150}
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300"
                 style={{ backgroundColor: THEME.iconBg }}
               >
                 <Icon className="w-6 h-6" style={{ color: THEME.primary }} />
               </div>
 
+              {/* Label */}
               <p className="text-sm mb-1.5" style={{ color: THEME.primary }}>
                 {label}
               </p>
+
+              {/* Value */}
               <p
                 className="text-lg font-bold uppercase tracking-wide"
                 style={{ color: THEME.primary }}
@@ -148,17 +168,29 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Contact form + map */}
+      {/* Contact Form + Map */}
       <section style={{ backgroundColor: THEME.bg }}>
+        {/* Form Section */}
         <div className="px-6 py-16 md:py-20">
-          <div className="max-w-2xl mx-auto text-center">
+          <div
+            className="max-w-2xl mx-auto text-center"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            {/* Subtitle */}
             <p
+              data-aos="fade-up"
+              data-aos-delay="100"
               className="text-xs md:text-sm font-bold tracking-wide uppercase mb-3"
               style={{ color: THEME.accent }}
             >
               Contact us
             </p>
+
+            {/* Heading */}
             <h2
+              data-aos="fade-up"
+              data-aos-delay="200"
               className="uppercase font-black leading-tight text-3xl md:text-4xl mb-10"
               style={{ color: THEME.dark }}
             >
@@ -168,32 +200,44 @@ const Contact = () => {
             </h2>
 
             <div className="space-y-4 text-left">
+              {/* Name + Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
                   value={form.name}
                   onChange={handleChange("name")}
                   placeholder="Your name"
-                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500"
+                  data-aos="fade-right"
+                  data-aos-delay="300"
+                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
                 />
+
                 <input
                   type="email"
                   value={form.email}
                   onChange={handleChange("email")}
                   placeholder="Email address"
-                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500"
+                  data-aos="fade-left"
+                  data-aos-delay="300"
+                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
                 />
               </div>
 
+              {/* Subject */}
               <select
                 value={form.subject}
                 onChange={handleChange("subject")}
-                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none appearance-none"
-                style={{ color: form.subject ? THEME.dark : "#6b7280" }}
+                data-aos="fade-up"
+                data-aos-delay="400"
+                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none appearance-none focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
+                style={{
+                  color: form.subject ? THEME.dark : "#6b7280",
+                }}
               >
                 <option value="" disabled>
                   Select subject
                 </option>
+
                 {SUBJECT_OPTIONS.map((opt) => (
                   <option key={opt} value={opt} style={{ color: THEME.dark }}>
                     {opt}
@@ -201,20 +245,28 @@ const Contact = () => {
                 ))}
               </select>
 
+              {/* Message */}
               <textarea
                 value={form.message}
                 onChange={handleChange("message")}
                 placeholder="Type your message"
                 rows={6}
-                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none resize-y placeholder:text-gray-500"
+                data-aos="fade-up"
+                data-aos-delay="500"
+                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none resize-y placeholder:text-gray-500 focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
               />
             </div>
 
+            {/* Send Button */}
             <button
               onClick={handleSend}
               disabled={!isValid}
-              className="mt-8 uppercase text-sm font-bold text-white px-8 py-3.5 rounded-md transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
-              style={{ backgroundColor: THEME.accent }}
+              data-aos="zoom-in"
+              data-aos-delay="600"
+              className="mt-8 uppercase text-sm font-bold text-white px-8 py-3.5 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
+              style={{
+                backgroundColor: THEME.accent,
+              }}
             >
               Send message here
             </button>
@@ -222,7 +274,11 @@ const Contact = () => {
         </div>
 
         {/* Map */}
-        <div className="relative w-full h-[420px] md:h-[480px]">
+        <div
+          className="relative w-full h-[420px] md:h-[480px]"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <iframe
             title="Location map"
             src={mapEmbedSrc}
@@ -231,12 +287,18 @@ const Contact = () => {
             referrerPolicy="no-referrer-when-downgrade"
           />
 
-          {/* Location card overlay */}
-          <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg px-4 py-3 max-w-xs">
+          {/* Location Card */}
+          <div
+            data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos-duration="900"
+            className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg px-4 py-3 max-w-xs"
+          >
             <div className="flex items-start justify-between gap-2">
               <p className="text-sm font-bold" style={{ color: THEME.dark }}>
                 {LOCATION.name}
               </p>
+
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <a
                   href={mapLink}
@@ -250,27 +312,37 @@ const Contact = () => {
                     style={{ color: THEME.dark }}
                   />
                 </a>
+
                 <a
                   href={directionsLink}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Get directions"
                   className="w-6 h-6 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
-                  style={{ backgroundColor: THEME.accent }}
+                  style={{
+                    backgroundColor: THEME.accent,
+                  }}
                 >
                   <Navigation className="w-3 h-3 text-white" />
                 </a>
               </div>
             </div>
+
             <p className="text-xs text-gray-500 mt-0.5">{LOCATION.address}</p>
+
             <div className="flex items-center gap-1 mt-1.5 text-xs">
               <span className="font-medium" style={{ color: THEME.dark }}>
                 {LOCATION.rating.toFixed(1)}
               </span>
+
               <Star
                 className="w-3 h-3"
-                style={{ color: THEME.accent, fill: THEME.accent }}
+                style={{
+                  color: THEME.accent,
+                  fill: THEME.accent,
+                }}
               />
+
               <a
                 href={mapLink}
                 target="_blank"
@@ -279,21 +351,28 @@ const Contact = () => {
               >
                 ({LOCATION.reviewCount})
               </a>
+
               <Info className="w-3 h-3 text-gray-400 ml-0.5" />
             </div>
           </div>
 
-          {/* Scroll to top */}
+          {/* Scroll To Top */}
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="absolute bottom-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition-opacity duration-200"
-            style={{ backgroundColor: THEME.accent }}
+            data-aos="zoom-in"
+            data-aos-delay="500"
+            className="absolute bottom-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 hover:-translate-y-1 transition-all duration-300"
+            style={{
+              backgroundColor: THEME.accent,
+            }}
           >
             <ArrowUp className="w-4 h-4 text-white" />
           </button>
         </div>
       </section>
+
+      {/* Footer */}
       <Footer />
     </section>
   );

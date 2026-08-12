@@ -30,11 +30,12 @@ const TESTIMONIALS = [
   },
 ];
 
-const AUTOPLAY_DELAY = 5000; // ms
+const AUTOPLAY_DELAY = 5000;
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
+
   const total = TESTIMONIALS.length;
 
   const peekIndex = (index - 1 + total) % total;
@@ -43,6 +44,7 @@ export default function Testimonials() {
 
   const startAutoplay = () => {
     clearInterval(timerRef.current);
+
     timerRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % total);
     }, AUTOPLAY_DELAY);
@@ -50,8 +52,10 @@ export default function Testimonials() {
 
   useEffect(() => {
     startAutoplay();
-    return () => clearInterval(timerRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
   }, []);
 
   const goNext = () => {
@@ -71,24 +75,34 @@ export default function Testimonials() {
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-16">
-      <div className="relative overflow-hidden bg-[#f4f6f5] rounded-3xl px-8 md:px-14 py-14">
+      <div
+        className="relative overflow-hidden bg-[#f4f6f5] rounded-3xl px-8 md:px-14 py-14"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr_1fr] gap-10 lg:gap-0 items-center">
-          {/* LEFT: Title + nav arrows */}
-          <div>
+          {/* LEFT: Title + Navigation */}
+          <div
+            data-aos="fade-right"
+            data-aos-delay="150"
+            data-aos-duration="900"
+          >
             <p className="text-[#F75709] font-bold uppercase tracking-wide text-sm mb-3">
               Testimonials
             </p>
+
             <h2 className="font-black text-3xl md:text-4xl leading-tight text-[#0d2b26] uppercase mb-10">
               What Are They Saying
               <br />
               About Us?
             </h2>
 
+            {/* Desktop navigation */}
             <div className="hidden lg:flex items-center gap-4">
               <button
                 onClick={goPrev}
                 aria-label="Previous testimonial"
-                className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+                className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-gray-100 transition-all duration-300 hover:-translate-x-1"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -105,10 +119,11 @@ export default function Testimonials() {
                   />
                 </svg>
               </button>
+
               <button
                 onClick={goNext}
                 aria-label="Next testimonial"
-                className="w-12 h-12 rounded-full bg-[#F75709] flex items-center justify-center hover:bg-[#0d2b26] transition-colors duration-300"
+                className="w-12 h-12 rounded-full bg-[#F75709] flex items-center justify-center hover:bg-[#0d2b26] transition-all duration-300 hover:translate-x-1"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -128,19 +143,37 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* MIDDLE: peek testimonial (clipped tail of previous quote) */}
-          <div className="hidden lg:block relative h-40 overflow-hidden">
+          {/* MIDDLE: Peek testimonial */}
+          <div
+            className="hidden lg:block relative h-40 overflow-hidden"
+            data-aos="fade-left"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
             <p
               className="absolute top-0 font-bold text-xl leading-snug text-[#0d2b26]/90"
-              style={{ width: "380px", left: "-170px" }}
+              style={{
+                width: "380px",
+                left: "-170px",
+              }}
             >
               {peek.quote}
             </p>
           </div>
 
-          {/* RIGHT: active testimonial, full */}
-          <div className="lg:border-l lg:border-gray-300 lg:pl-10">
-            <div className="flex gap-1 mb-4">
+          {/* RIGHT: Active testimonial */}
+          <div
+            className="lg:border-l lg:border-gray-300 lg:pl-10"
+            data-aos="fade-left"
+            data-aos-delay="450"
+            data-aos-duration="1000"
+          >
+            {/* Rating */}
+            <div
+              className="flex gap-1 mb-4"
+              data-aos="zoom-in"
+              data-aos-delay="600"
+            >
               {Array.from({ length: active.rating }).map((_, i) => (
                 <svg
                   key={i}
@@ -153,19 +186,37 @@ export default function Testimonials() {
                 </svg>
               ))}
             </div>
-            <p className="font-bold text-xl leading-snug text-[#0d2b26] mb-8">
+
+            {/* Quote */}
+            <p
+              key={active.quote}
+              data-aos="fade-up"
+              data-aos-duration="700"
+              className="font-bold text-xl leading-snug text-[#0d2b26] mb-8"
+            >
               "{active.quote}"
             </p>
-            <div className="flex items-center gap-3">
+
+            {/* User */}
+            <div
+              key={active.name}
+              className="flex items-center gap-3"
+              data-aos="fade-up"
+              data-aos-delay="150"
+              data-aos-duration="700"
+            >
               <img
                 src={active.avatar}
                 alt={active.name}
+                loading="lazy"
                 className="w-12 h-12 rounded-full object-cover"
               />
+
               <div>
                 <h4 className="font-black text-[#0d2b26] uppercase text-sm tracking-wide">
                   {active.name}
                 </h4>
+
                 <p className="text-gray-500 text-sm">{active.role}</p>
               </div>
             </div>
@@ -173,7 +224,11 @@ export default function Testimonials() {
         </div>
 
         {/* Pagination dots */}
-        <div className="flex justify-center lg:justify-start lg:pl-[300px] mt-10 lg:mt-8 gap-3">
+        <div
+          className="flex justify-center lg:justify-start lg:pl-[300px] mt-10 lg:mt-8 gap-3"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           {TESTIMONIALS.map((_, i) => (
             <button
               key={i}
@@ -188,12 +243,16 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Mobile nav arrows */}
-        <div className="flex lg:hidden items-center justify-center gap-4 mt-8">
+        {/* Mobile navigation */}
+        <div
+          className="flex lg:hidden items-center justify-center gap-4 mt-8"
+          data-aos="fade-up"
+          data-aos-delay="700"
+        >
           <button
             onClick={goPrev}
             aria-label="Previous testimonial"
-            className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -210,10 +269,11 @@ export default function Testimonials() {
               />
             </svg>
           </button>
+
           <button
             onClick={goNext}
             aria-label="Next testimonial"
-            className="w-12 h-12 rounded-full bg-[#F75709] flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-[#F75709] flex items-center justify-center hover:bg-[#0d2b26] transition-colors duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

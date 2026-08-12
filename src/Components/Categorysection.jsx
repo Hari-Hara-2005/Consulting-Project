@@ -104,18 +104,23 @@ export default function CategorySection() {
       <h2
         className="text-center text-2xl font-bold mb-10"
         style={{ color: THEME.primary }}
+        data-aos="fade-up"
       >
         Browse by category
       </h2>
 
       {/* Category grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-4">
-        {CATEGORIES.map(({ name, icon: Icon }) => {
+        {CATEGORIES.map(({ name, icon: Icon }, i) => {
           const isActive = selected === name;
           return (
             <button
               key={name}
               onClick={() => handleSelect(name)}
+              data-aos="zoom-in"
+              data-aos-delay={i * 60}
+              data-aos-duration="500"
+              data-aos-once="true"
               className="rounded-2xl border p-6 flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 focus:outline-none"
               style={{
                 borderColor: isActive ? THEME.accent : "#e5e7eb",
@@ -184,7 +189,10 @@ export default function CategorySection() {
                 <div
                   key={i}
                   className="flex items-start justify-between gap-4 rounded-xl border p-5"
-                  style={{ borderColor: "#e5e7eb" }}
+                  style={{
+                    borderColor: "#e5e7eb",
+                    animation: `catRowIn 0.35s ease-out ${i * 0.08}s both`,
+                  }}
                 >
                   <div className="flex items-start gap-4 min-w-0">
                     <img
@@ -272,6 +280,10 @@ export default function CategorySection() {
         @keyframes catModalPop {
           from { opacity: 0; transform: scale(0.95) translateY(8px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes catRowIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </section>

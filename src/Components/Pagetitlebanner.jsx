@@ -1,20 +1,53 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Navbar from "./Navbar";
 
 export default function PageTitleBanner({ title, breadcrumbs }) {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 80,
+    });
+  }, []);
+
   return (
     <section className="relative bg-[#0d2b26] px-6 overflow-hidden min-h-[60vh] py-10 flex flex-col">
-      <Navbar />
+      {/* Navbar */}
+      <div data-aos="fade-down" data-aos-duration="800">
+        <Navbar />
+      </div>
 
-      {/* fills remaining space below navbar, centers title + breadcrumb */}
+      {/* Title + Breadcrumb */}
       <div className="flex-1 flex flex-col items-center justify-center text-center py-10">
-        <h1 className="font-black text-5xl md:text-6xl lg:text-7xl uppercase text-white tracking-wide mb-6">
+        {/* Title */}
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+          className="font-black text-5xl md:text-6xl lg:text-7xl uppercase text-white tracking-wide mb-6"
+        >
           {title}
         </h1>
 
-        <nav aria-label="breadcrumb">
+        {/* Breadcrumb */}
+        <nav
+          aria-label="breadcrumb"
+          data-aos="fade-up"
+          data-aos-duration="900"
+          data-aos-delay="450"
+        >
           <ol className="flex items-center justify-center gap-2 text-base">
             {breadcrumbs.map((crumb, i) => (
-              <li key={crumb.label} className="flex items-center gap-2">
+              <li
+                key={crumb.label}
+                className="flex items-center gap-2"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay={550 + i * 100}
+              >
                 {i > 0 && (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +64,7 @@ export default function PageTitleBanner({ title, breadcrumbs }) {
                     />
                   </svg>
                 )}
+
                 {crumb.active ? (
                   <span className="text-[#a9d18e] font-medium">
                     {crumb.label}

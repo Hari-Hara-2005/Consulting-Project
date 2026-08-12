@@ -41,11 +41,15 @@ function ToggleIcon({ open, active }) {
   );
 }
 
-function FaqItem({ question, answer, isOpen, onClick }) {
+function FaqItem({ question, answer, isOpen, onClick, delay }) {
   return (
     <div
       className="rounded-xl overflow-hidden transition-colors duration-300"
       style={{ backgroundColor: isOpen ? THEME.primary : "#f3f4f6" }}
+      data-aos="fade-up"
+      data-aos-delay={delay}
+      data-aos-duration="600"
+      data-aos-once="true"
     >
       <button
         onClick={onClick}
@@ -104,13 +108,20 @@ export default function FaqSection() {
     <section className="bg-white py-16 sm:py-20 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
         {/* Left: Image with decorative blob */}
-        <div className="relative w-full max-w-md mx-auto lg:mx-0">
+        <div
+          className="relative w-full max-w-md mx-auto lg:mx-0"
+          data-aos="fade-right"
+          data-aos-duration="800"
+        >
           {/* Decorative green blob */}
           <div
             className="hidden sm:block absolute -bottom-8 -left-8 w-3/4 h-3/4 rounded-[3rem] -z-10"
             style={{
               background: `linear-gradient(135deg, ${THEME.secondary} 0%, rgba(195,223,148,0) 100%)`,
             }}
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-aos-duration="800"
           />
           <img
             src="assets/2.jpg"
@@ -121,22 +132,24 @@ export default function FaqSection() {
 
         {/* Right: Title + Accordion */}
         <div>
-          <Title
-            align="left"
-            subtitle="FAQ's"
-            title={
-              <>
-                Frequently Asked
-                <br />
-                Asked Question
-              </>
-            }
-          />
+          <div data-aos="fade-left" data-aos-duration="800">
+            <Title
+              align="left"
+              subtitle="FAQ's"
+              title={
+                <>
+                  Frequently Asked
+                  <br />
+                  Asked Question
+                </>
+              }
+            />
 
-          <p className="text-slate-500 leading-relaxed mt-5 mb-8 max-w-md">
-            Morem ipsum dolor sit amet, consectetur adipiscing elita florai psum
-            dolor sit amet, amet consecteture.
-          </p>
+            <p className="text-slate-500 leading-relaxed mt-5 mb-8 max-w-md">
+              Morem ipsum dolor sit amet, consectetur adipiscing elita florai
+              psum dolor sit amet, amet consecteture.
+            </p>
+          </div>
 
           <div className="flex flex-col gap-4">
             {FAQS.map((faq, index) => (
@@ -146,6 +159,7 @@ export default function FaqSection() {
                 answer={faq.answer}
                 isOpen={openIndex === index}
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+                delay={200 + index * 120}
               />
             ))}
           </div>

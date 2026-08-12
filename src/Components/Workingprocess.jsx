@@ -36,7 +36,7 @@ export default function WorkingProcess() {
 
       <div className="relative max-w-6xl mx-auto">
         {/* Title */}
-        <div className="mb-16">
+        <div className="mb-16" data-aos="fade-up">
           <Title
             align="centre"
             subtitle="Our Services"
@@ -55,15 +55,26 @@ export default function WorkingProcess() {
         {/* Timeline */}
         <div className="relative flex flex-col md:flex-row md:justify-between gap-14 md:gap-0">
           {/* continuous vertical line for mobile, spans full stack */}
-          <div className="md:hidden absolute left-1/2 top-6 bottom-6 w-px bg-white/15 -translate-x-1/2 z-0" />
+          <div
+            className="md:hidden absolute left-1/2 top-6 bottom-6 w-px bg-white/15 -translate-x-1/2 z-0"
+            data-aos="fade"
+            data-aos-delay="200"
+          />
 
           {/* horizontal line for desktop, aligned through badge centers */}
-          <div className="hidden md:block absolute top-6 left-0 right-0 h-px bg-white/15 z-0" />
+          <div
+            className="hidden md:block absolute top-6 left-0 right-0 h-px bg-white/15 z-0"
+            data-aos="fade"
+            data-aos-delay="200"
+          />
 
-          {STEPS.map((item) => (
+          {STEPS.map((item, i) => (
             <div
               key={item.step}
               className="relative z-10 flex-1 flex flex-col items-center text-center md:px-6"
+              data-aos="fade-up"
+              data-aos-delay={i * 150}
+              data-aos-duration="700"
             >
               <span className="bg-[#a9d18e] text-[#0d2b26] font-black text-xs uppercase tracking-wide px-5 py-2.5 rounded-full">
                 {item.step}
