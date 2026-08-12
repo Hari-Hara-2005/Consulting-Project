@@ -168,8 +168,10 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Contact Button */}
-          <button
-            className="
+          <Link to="/service-booking">
+            {" "}
+            <button
+              className="
               hidden
               lg:block
               rounded-full
@@ -184,10 +186,10 @@ export default function Navbar() {
               transition-colors
               hover:bg-[#a3c369]
             "
-          >
-            Let's Get In Touch
-          </button>
-
+            >
+              Let's Get In 1:1
+            </button>
+          </Link>
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileOpen((v) => !v)}

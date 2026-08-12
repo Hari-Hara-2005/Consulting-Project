@@ -8,13 +8,13 @@ import {
   List,
   Globe,
   Clock,
-  Star,
   X,
   User,
   Mail,
   Phone,
 } from "lucide-react";
 import PageTitleBanner from "../Components/Pagetitlebanner";
+import Footer from "../Components/Footer";
 
 const THEME = {
   primary: "#063231",
@@ -27,45 +27,9 @@ const THEME = {
 const HOST_WHATSAPP_NUMBER = "9952857016";
 
 const HOST = {
-  name: "Majid John",
-  avatar:
-    "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=200&q=80",
-  rating: 4.9,
-  reviewCount: 14,
   meetingTitle: "Mentorship Meeting",
   duration: "30 minutes",
 };
-
-const REVIEWS = [
-  {
-    name: "Farah",
-    date: "Aug 2026",
-    rating: 5,
-    tag: "Financial Cycle 2 & FNA",
-    text: "Really valuable session — clear, practical, and easy to follow. I walked away with a better way to think through my own goals, not just a list of facts. Thank you for the time and patience!",
-  },
-  {
-    name: "Askar",
-    date: "Aug 2026",
-    rating: 5,
-    tag: "Corporate Presentation",
-    text: "Great presentation, well organized and easy to follow.",
-  },
-  {
-    name: "Guest",
-    date: "Aug 2026",
-    rating: 5,
-    tag: "Financial Cycle 2 & FNA",
-    text: "Very helpful session, answered all my questions with patience.",
-  },
-  {
-    name: "Farah",
-    date: "Aug 2026",
-    rating: 5,
-    tag: "Financial Cycle 2 & FNA",
-    text: "Second session was just as useful as the first — highly recommend.",
-  },
-];
 
 // Build 30-minute slots from 11:30 AM to 8:30 PM (IST), formatted 12-hour with AM/PM
 function buildTimeSlots(
@@ -278,121 +242,10 @@ export default function BookingPage() {
           { label: "Services", href: "#", active: true },
         ]}
       />
-      <div className="min-h-screen bg-white flex flex-col lg:flex-row">
-        {/* LEFT: Host info + reviews */}
-        <div className="w-full lg:w-[420px] flex-shrink-0 border-b lg:border-b-0 lg:border-r border-gray-200 p-6 lg:p-8 lg:h-screen lg:overflow-y-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <img
-              src={HOST.avatar}
-              alt={HOST.name}
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div>
-              <p
-                className="font-semibold text-sm"
-                style={{ color: THEME.primary }}
-              >
-                {HOST.name}
-              </p>
-              <div className="flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-3 h-3"
-                    fill="#facc15"
-                    stroke="#facc15"
-                  />
-                ))}
-                <span className="text-xs text-gray-500">
-                  {HOST.reviewCount} reviews
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <h2
-            className="text-lg font-bold mb-3"
-            style={{ color: THEME.primary }}
-          >
-            {HOST.meetingTitle}
-          </h2>
-
-          <div
-            className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-3 py-1.5 text-sm mb-6"
-            style={{ color: THEME.primary }}
-          >
-            <Clock className="w-4 h-4" />
-            {HOST.duration}
-          </div>
-
-          <h3
-            className="text-xl font-bold mb-4"
-            style={{ color: THEME.primary }}
-          >
-            {HOST.meetingTitle}
-          </h3>
-
-          <div className="flex items-center gap-2 pb-4 mb-4 border-b border-gray-200">
-            <span className="font-bold" style={{ color: THEME.primary }}>
-              {HOST.rating}
-            </span>
-            <div className="flex items-center gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-4 h-4"
-                  fill="#facc15"
-                  stroke="#facc15"
-                />
-              ))}
-            </div>
-            <span className="text-gray-500 text-sm">
-              ({HOST.reviewCount} reviews)
-            </span>
-          </div>
-
-          <div className="space-y-6">
-            {REVIEWS.map((r, i) => (
-              <div key={i}>
-                <p
-                  className="font-semibold text-sm"
-                  style={{ color: THEME.primary }}
-                >
-                  {r.name}
-                </p>
-                <p className="text-xs text-gray-400 mb-1">{r.date}</p>
-                <div className="flex items-center gap-2 mb-2 flex-wrap">
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: r.rating }).map((_, idx) => (
-                      <Star
-                        key={idx}
-                        className="w-3.5 h-3.5"
-                        fill="#facc15"
-                        stroke="#facc15"
-                      />
-                    ))}
-                  </div>
-                  <span
-                    className="text-xs px-2 py-0.5 rounded-full"
-                    style={{
-                      backgroundColor: `${THEME.secondary}55`,
-                      color: THEME.primary,
-                    }}
-                  >
-                    {r.tag}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {r.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT: Calendar + slots */}
-        <div className="flex-1 bg-gray-50 p-4 md:p-8 lg:p-6 xl:p-8">
-          <div className="w-full lg:max-w-3xl">
+      <div className="bg-white flex items-center justify-center p-4 md:p-8">
+        {/* Calendar + slots, centered */}
+        <div className="w-full max-w-3xl bg-gray-50 rounded-2xl p-4 md:p-8 lg:p-6 xl:p-8">
+          <div className="w-full">
             {/* Top bar */}
             <div className="bg-white rounded-2xl shadow-sm px-5 py-4 lg:px-4 lg:py-3 flex flex-wrap items-center justify-between gap-4 mb-6 lg:mb-4">
               <div
@@ -859,6 +712,7 @@ export default function BookingPage() {
           </div>
         )}
       </div>
+      <Footer />
     </section>
   );
 }
