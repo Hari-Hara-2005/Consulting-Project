@@ -6,6 +6,8 @@ const NAV_ITEMS = [
   { label: "HOME", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/service" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "Faq", to: "/faq" },
   { label: "CONTACT", to: "/contact-us" },
 ];
 
