@@ -156,7 +156,7 @@ export default function Hero() {
             Our team prioritizes usability and accessibility to ensure that
             every visitor enjoys a seamless intuitive.
           </Typography>
-          
+
           <Typography
             sx={{
               color: "rgba(255,255,255,0.75)",
@@ -166,7 +166,7 @@ export default function Hero() {
               lineHeight: 1.6,
             }}
           >
-            Kudanthai Infotech 
+            Kudanthai Infotech Growing Company
           </Typography>
 
           <Button
