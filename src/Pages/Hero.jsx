@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
 import Navbar from "../Components/Navbar";
+import Title from "../Components/Title";
+import Service from "../Components/Service";
+import AboutCompany from "../Components/Aboutcompany";
+import StatsCounter from "../Components/Statscounter";
+import WorkingProcess from "../Components/Workingprocess";
+import TeamMembers from "../Components/Teammembers";
+import Testimonials from "../Components/Testimonials";
+import Footer from "../Components/Footer";
 
 function useCountUp(target, { duration = 5000, decimals = 0 } = {}) {
   const [value, setValue] = useState(0);
@@ -16,15 +23,22 @@ function useCountUp(target, { duration = 5000, decimals = 0 } = {}) {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasRun.current) {
             hasRun.current = true;
+
             const start = performance.now();
 
             const tick = (now) => {
               const progress = Math.min((now - start) / duration, 1);
-              // ease-out cubic for a natural deceleration
+
+              // Ease-out cubic
               const eased = 1 - Math.pow(1 - progress, 3);
+
               setValue(target * eased);
-              if (progress < 1) requestAnimationFrame(tick);
-              else setValue(target);
+
+              if (progress < 1) {
+                requestAnimationFrame(tick);
+              } else {
+                setValue(target);
+              }
             };
 
             requestAnimationFrame(tick);
@@ -36,6 +50,7 @@ function useCountUp(target, { duration = 5000, decimals = 0 } = {}) {
     );
 
     observer.observe(node);
+
     return () => observer.disconnect();
   }, [target, duration]);
 
@@ -45,202 +60,256 @@ function useCountUp(target, { duration = 5000, decimals = 0 } = {}) {
   return [display, ref];
 }
 
-/* ------------------------------------------------------------------ */
-/* StatCard — floating pill with a bouncing idle animation + counter  */
-/* ------------------------------------------------------------------ */
-function StatCard({ value, decimals, suffix, label, sx, delay = 0, duration }) {
-  const [display, ref] = useCountUp(value, { decimals, duration });
+// ---------------------------------------------------------
+// Stat Card
+// ---------------------------------------------------------
+
+function StatCard({
+  value,
+  decimals,
+  suffix,
+  label,
+  className = "",
+  delay = 0,
+  duration,
+}) {
+  const [display, ref] = useCountUp(value, {
+    decimals,
+    duration,
+  });
 
   return (
-    <Box
+    <div
       ref={ref}
-      sx={{
-        position: "absolute",
-        backgroundColor: "rgba(255,255,255,0.14)",
-        backdropFilter: "blur(14px)",
-        border: "1px solid rgba(255,255,255,0.25)",
-        borderRadius: "16px",
-        px: 3,
-        py: 2,
-        minWidth: 150,
-        boxShadow: "0 12px 30px rgba(0,0,0,0.25)",
-        animation: `float 3.2s ease-in-out ${delay}s infinite`,
-        "@keyframes float": {
-          "0%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-12px)" },
-          "100%": { transform: "translateY(0px)" },
-        },
-        ...sx,
+      className={`
+        absolute
+        min-w-[150px]
+        rounded-2xl
+        border
+        border-white/25
+        bg-white/[0.14]
+        px-6
+        py-4
+        shadow-[0_12px_30px_rgba(0,0,0,0.25)]
+        backdrop-blur-[14px]
+        animate-float
+        ${className}
+      `}
+      style={{
+        animationDelay: `${delay}s`,
       }}
     >
-      <Typography
-        sx={{
-          color: "#fff",
-          fontWeight: 800,
-          fontSize: "1.9rem",
-          lineHeight: 1.1,
-        }}
-      >
+      <div className="text-[1.9rem] font-extrabold leading-[1.1] text-white">
         {display}
         {suffix}
-      </Typography>
-      <Typography
-        sx={{
-          color: "rgba(255,255,255,0.85)",
-          fontSize: "0.85rem",
-          fontWeight: 500,
-          mt: 0.5,
-        }}
-      >
+      </div>
+
+      <div className="mt-2 text-[0.85rem] font-medium text-white/85">
         {label}
-      </Typography>
-    </Box>
+      </div>
+    </div>
   );
 }
 
+// ---------------------------------------------------------
+// Hero
+// ---------------------------------------------------------
+
 export default function Hero() {
   return (
-    <Box
-      sx={{
-        background:
-          "linear-gradient(135deg, #0d3b34 0%, #123f38 55%, #0d3b34 100%)",
-        px: { xs: 3, md: 8 },
-        py: { xs: 8, md: 10 },
-        overflow: "hidden",
-      }}
-    >
-      <Navbar />
-      <Box
-        sx={{
-          maxWidth: "1300px",
-          mx: "auto",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          alignItems: "center",
-          gap: { xs: 6, md: 4 },
-        }}
+    <>
+      <section
+        className="
+        overflow-hidden
+        bg-[linear-gradient(135deg,#0d3b34_0%,#123f38_55%,#0d3b34_100%)]
+        px-6
+        py-8
+        md:px-8
+        md:py-10
+      "
       >
-        {/* -------- Left: copy -------- */}
-        <Box sx={{ flex: 1 }}>
-          <Typography
-            component="h1"
-            sx={{
-              fontWeight: 900,
-              textTransform: "uppercase",
-              color: "#fff",
-              lineHeight: 1.05,
-              fontSize: { xs: "2.4rem", sm: "3.2rem", md: "3.6rem" },
-              letterSpacing: "0.01em",
-            }}
-          >
-            Innovative
-            <br />
-            <Box component="span" sx={{ color: "#b7d17e" }}>
-              Business
-            </Box>
-            <br />
-            Solutions
-            <br />
-            For Everyone
-          </Typography>
+        <Navbar />
 
-          <Typography
-            sx={{
-              color: "rgba(255,255,255,0.75)",
-              fontSize: "1rem",
-              mt: 3,
-              maxWidth: 420,
-              lineHeight: 1.6,
-            }}
-          >
-            Our team prioritizes usability and accessibility to ensure that
-            every visitor enjoys a seamless intuitive.
-          </Typography>
-          
-          <Typography
-            sx={{
-              color: "rgba(255,255,255,0.75)",
-              fontSize: "1rem",
-              mt: 3,
-              maxWidth: 420,
-              lineHeight: 1.6,
-            }}
-          >
-            Kudanthai Infotech 
-          </Typography>
-
-          <Button
-            variant="contained"
-            disableElevation
-            sx={{
-              mt: 4,
-              backgroundColor: "#f36f21",
-              color: "#fff",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.03em",
-              textTransform: "uppercase",
-              borderRadius: "999px",
-              px: 3.5,
-              py: 1.5,
-              "&:hover": { backgroundColor: "#d95f18" },
-            }}
-          >
-            Let's Get In Touch
-          </Button>
-        </Box>
-
-        {/* -------- Right: image + floating stat cards -------- */}
-        <Box
-          sx={{
-            position: "relative",
-            flex: 1,
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-          }}
+        <div
+          className="
+          mx-auto
+          flex
+          max-w-[1300px]
+          flex-col
+          items-center
+          gap-12
+          md:flex-row
+          md:gap-4
+        "
         >
-          <Box
-            sx={{
-              position: "relative",
-              width: { xs: "100%", md: 460 },
-              maxWidth: 460,
-            }}
+          {/* ------------------------------------------------
+            Left Content
+        ------------------------------------------------ */}
+
+          <div className="flex-1">
+            <h1
+              className="
+              text-[2.4rem]
+              font-black
+              uppercase
+              leading-[1.05]
+              tracking-[0.01em]
+              text-white
+              sm:text-[3.2rem]
+              md:text-[3.6rem]
+            "
+            >
+              Innovative
+              <br />
+              <span className="text-[#b7d17e]">Business</span>
+              <br />
+              Solutions
+              <br />
+              For Everyone
+            </h1>
+
+            <p
+              className="
+              mt-6
+              max-w-[420px]
+              text-base
+              leading-[1.6]
+              text-white/75
+            "
+            >
+              Our team prioritizes usability and accessibility to ensure that
+              every visitor enjoys a seamless intuitive.
+            </p>
+
+            <p
+              className="
+              mt-6
+              max-w-[420px]
+              text-base
+              leading-[1.6]
+              text-white/75
+            "
+            >
+              Kudanthai Infotech
+            </p>
+
+            <button
+              className="
+              mt-8
+              rounded-full
+              bg-[#f36f21]
+              px-7
+              py-3.5
+              text-[0.8rem]
+              font-bold
+              uppercase
+              tracking-[0.03em]
+              text-white
+              transition-colors
+              hover:bg-[#d95f18]
+            "
+            >
+              Let's Get In Touch
+            </button>
+          </div>
+
+          {/* ------------------------------------------------
+            Right Image + Stats
+        ------------------------------------------------ */}
+
+          <div
+            className="
+            relative
+            flex
+            w-full
+            flex-1
+            justify-center
+          "
           >
-            <Box
-              component="img"
-              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80&auto=format&fit=crop"
-              alt="Smiling business professional"
-              sx={{
-                width: "100%",
-                display: "block",
-                borderRadius: "24px",
-              }}
-            />
+            <div
+              className="
+              relative
+              w-full
+              max-w-[460px]
+              md:w-[460px]
+            "
+            >
+              <img
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80&auto=format&fit=crop"
+                alt="Smiling business professional"
+                className="
+                block
+                w-full
+                rounded-3xl
+              "
+              />
 
-            {/* ROI card */}
-            <StatCard
-              value={98}
-              suffix="%"
-              label="Return on investment"
-              delay={0}
-              duration={4500}
-              sx={{ left: { xs: 0, sm: -20 }, bottom: -20 }}
-            />
+              {/* ROI Card */}
 
-            {/* Happy clients card */}
-            <StatCard
-              value={22.5}
-              decimals={1}
-              suffix="K"
-              label="Happy clients worldwide"
-              delay={0.6}
-              duration={5500}
-              sx={{ right: { xs: 0, sm: -10 }, top: "38%" }}
-            />
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+              <StatCard
+                value={98}
+                suffix="%"
+                label="Return on investment"
+                delay={0}
+                duration={4500}
+                className="
+                bottom-[-20px]
+                left-0
+                sm:left-[-20px]
+              "
+              />
+
+              {/* Happy Clients Card */}
+
+              <StatCard
+                value={22.5}
+                decimals={1}
+                suffix="K"
+                label="Happy clients worldwide"
+                delay={0.6}
+                duration={5500}
+                className="
+                right-0
+                top-[38%]
+                sm:right-[-10px]
+              "
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <Title
+          align="center"
+          subtitle="Our Services"
+          title={
+            <>
+              Versatile Range
+              <br />
+              Of Business Solutions
+            </>
+          }
+        />
+        <Service />
+      </section>
+      <section>
+        <AboutCompany />
+      </section>
+      <section>
+        <StatsCounter />
+      </section>
+      <section>
+        <WorkingProcess />
+      </section>
+      <section>
+        <TeamMembers />
+      </section>
+      <section>
+        <Testimonials />
+      </section>
+      <section>
+        <Footer />
+      </section>
+    </>
   );
 }

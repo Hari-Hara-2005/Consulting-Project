@@ -1,236 +1,261 @@
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Button,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Circle, Menu, X } from "lucide-react";
 
-// Dropdown data for nav items that have sub-menus
 const NAV_ITEMS = [
-  { label: "HOME" },
-  { label: "PAGES" },
-  { label: "PORTFOLIO" },
-  { label: "BLOG" },
-  { label: "CONTACT" },
+  { label: "HOME", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/service" },
+  { label: "CONTACT", to: "/contact" },
 ];
 
-function NavDropdownItem({ label, dropdown }) {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleOpen = (e) => setAnchorEl(e.currentTarget);
-  const handleClose = () => setAnchorEl(null);
-
+function NavLinkItem({ label, to, onClick, mobile }) {
   return (
-    <Box
-      onMouseEnter={dropdown ? handleOpen : undefined}
-      onMouseLeave={dropdown ? handleClose : undefined}
-      sx={{ display: "flex", alignItems: "center" }}
+    <Link
+      to={to}
+      onClick={onClick}
+      className={
+        mobile
+          ? `
+            block
+            w-full
+            px-5 py-3
+            text-[0.9rem]
+            font-bold
+            tracking-[0.03em]
+            uppercase
+            text-[#0d3b34]
+            transition-colors
+            hover:text-[#f36f21]
+          `
+          : `
+            flex items-center
+            px-5 py-2
+            text-[0.85rem]
+            font-bold
+            tracking-[0.03em]
+            uppercase
+            text-[#0d3b34]
+            transition-colors
+            hover:bg-transparent
+            hover:text-[#f36f21]
+          `
+      }
     >
-      <Button
-        onClick={dropdown ? handleOpen : undefined}
-        disableRipple
-        sx={{
-          color: "#0d3b34",
-          fontWeight: 700,
-          fontSize: "0.85rem",
-          letterSpacing: "0.03em",
-          textTransform: "uppercase",
-          px: 1.25,
-          "&:hover": {
-            backgroundColor: "transparent",
-            color: "#f36f21",
-          },
-        }}
-        endIcon={
-          dropdown ? (
-            <KeyboardArrowDownIcon sx={{ fontSize: "1rem", ml: -0.5 }} />
-          ) : null
-        }
-      >
-        {label}
-      </Button>
-
-      {dropdown && (
-        <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{ onMouseLeave: handleClose }}
-          disableScrollLock
-          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-          transformOrigin={{ vertical: "top", horizontal: "left" }}
-          slotProps={{
-            paper: {
-              sx: {
-                mt: 1,
-                borderRadius: "10px",
-                minWidth: 180,
-                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
-                py: 1,
-              },
-            },
-          }}
-        >
-          {dropdown.map((item) => (
-            <MenuItem
-              key={item}
-              onClick={handleClose}
-              sx={{
-                fontSize: "0.85rem",
-                fontWeight: 500,
-                color: "#0d3b34",
-                py: 1,
-                "&:hover": {
-                  backgroundColor: "rgba(243,111,33,0.08)",
-                  color: "#f36f21",
-                },
-              }}
-            >
-              {item}
-            </MenuItem>
-          ))}
-        </Menu>
-      )}
-    </Box>
+      {label}
+    </Link>
   );
 }
 
 function Logo() {
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-      <Box
-        sx={{
-          position: "relative",
-          width: 32,
-          height: 32,
-          borderRadius: "50%",
-          background: "#f36f21",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+    <div className="flex items-center gap-2">
+      <div
+        className="
+          relative
+          flex
+          h-8
+          w-8
+          items-center
+          justify-center
+          rounded-full
+          bg-[#f36f21]
+        "
       >
-        <Box
-          sx={{
-            width: 22,
-            height: 22,
-            borderRadius: "50%",
-            background: "#0d3b34",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+        <div
+          className="
+            flex
+            h-[22px]
+            w-[22px]
+            items-center
+            justify-center
+            rounded-full
+            bg-[#0d3b34]
+          "
         >
-          <FiberManualRecordIcon
-            sx={{ color: "#ffffff", fontSize: "0.7rem" }}
-          />
-        </Box>
-      </Box>
-      <Typography
-        sx={{
-          fontWeight: 800,
-          fontSize: "1.3rem",
-          letterSpacing: "0.02em",
-          color: "#0d3b34",
-        }}
+          <Circle size={9} fill="white" className="text-white" />
+        </div>
+      </div>
+
+      <span
+        className="
+          text-[1.3rem]
+          font-extrabold
+          tracking-[0.02em]
+          text-[#0d3b34]
+        "
       >
         PROZEN
-      </Typography>
-    </Box>
+      </span>
+    </div>
   );
 }
 
 export default function Navbar() {
-  // Track scroll position so the bar can morph from a floating
-  // rounded pill into a full-width fixed bar once the page scrolls.
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileOpen]);
+
+  // Close the mobile menu automatically if the viewport grows past the lg breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setIsMobileOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <>
-      {/* Spacer so page content doesn't jump when the navbar becomes fixed */}
-      {isScrolled && <Box sx={{ height: 76 }} />}
+      {/* Spacer when navbar becomes fixed */}
+      {isScrolled && <div className="h-[76px]" />}
 
-      <AppBar
-        position={isScrolled ? "fixed" : "static"}
-        elevation={isScrolled ? 4 : 0}
-        sx={{
-          top: 0,
-          left: 0,
-          backgroundColor: "#ffffff",
-          borderRadius: isScrolled ? 0 : "16px",
-          maxWidth: isScrolled ? "100%" : "1300px",
-          width: "100%",
-          mx: "auto",
-          transition:
-            "border-radius 0.35s ease, max-width 0.35s ease, box-shadow 0.35s ease",
-          zIndex: 1200,
-        }}
+      <nav
+        className={`
+          ${isScrolled ? "fixed top-0 left-0 w-full" : "relative mx-auto w-full max-w-[1300px]"}
+          z-[1200]
+          bg-white
+          transition-all
+          duration-300
+          ease-in-out
+          ${isScrolled ? "rounded-none shadow-md" : "rounded-2xl"}
+        `}
       >
-        <Toolbar
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            py: 1.5,
-            px: { xs: 2, md: isScrolled ? 6 : 3 },
-            minHeight: "auto !important",
-            transition: "padding 0.35s ease",
-          }}
+        <div
+          className={`
+            flex
+            items-center
+            justify-between
+            min-h-0
+            py-4
+            px-4
+            transition-all
+            duration-300
+            md:px-6
+            lg:py-6
+            lg:${isScrolled ? "px-6" : "px-3"}
+          `}
         >
           {/* Logo */}
           <Logo />
 
-          {/* Nav links */}
-          <Box
-            sx={{
-              display: { xs: "none", lg: "flex" },
-              alignItems: "center",
-              gap: 0.5,
-            }}
-          >
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-2 lg:flex">
             {NAV_ITEMS.map((item) => (
-              <NavDropdownItem key={item.label} label={item.label} />
+              <NavLinkItem key={item.label} label={item.label} to={item.to} />
             ))}
-          </Box>
+          </div>
 
-          <Button
-            variant="contained"
-            disableElevation
-            sx={{
-              backgroundColor: "#b7d17e",
-              color: "#0d3b34",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.03em",
-              textTransform: "uppercase",
-              borderRadius: "999px",
-              px: 3,
-              py: 1.4,
-              "&:hover": {
-                backgroundColor: "#a3c369",
-              },
-            }}
+          {/* Desktop Contact Button */}
+          <button
+            className="
+              hidden
+              lg:block
+              rounded-full
+              bg-[#b7d17e]
+              px-6
+              py-3.5
+              text-[0.8rem]
+              font-bold
+              tracking-[0.03em]
+              uppercase
+              text-[#0d3b34]
+              transition-colors
+              hover:bg-[#a3c369]
+            "
           >
             Let's Get In Touch
-          </Button>
-        </Toolbar>
-      </AppBar>
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsMobileOpen((v) => !v)}
+            aria-label={isMobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileOpen}
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0d3b34]/5
+              text-[#0d3b34]
+              transition-colors
+              hover:bg-[#0d3b34]/10
+              lg:hidden
+            "
+          >
+            {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Panel */}
+        <div
+          className={`
+            overflow-hidden
+            transition-all
+            duration-300
+            ease-in-out
+            lg:hidden
+            ${isMobileOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"}
+          `}
+        >
+          <div className="flex flex-col gap-1 border-t border-[#0d3b34]/10 px-4 py-4">
+            {NAV_ITEMS.map((item) => (
+              <NavLinkItem
+                key={item.label}
+                label={item.label}
+                to={item.to}
+                mobile
+                onClick={() => setIsMobileOpen(false)}
+              />
+            ))}
+
+            <button
+              onClick={() => setIsMobileOpen(false)}
+              className="
+                mt-2
+                w-full
+                rounded-full
+                bg-[#b7d17e]
+                px-6
+                py-3.5
+                text-[0.8rem]
+                font-bold
+                tracking-[0.03em]
+                uppercase
+                text-[#0d3b34]
+                transition-colors
+                hover:bg-[#a3c369]
+              "
+            >
+              Let's Get In Touch
+            </button>
+          </div>
+        </div>
+      </nav>
     </>
   );
 }
