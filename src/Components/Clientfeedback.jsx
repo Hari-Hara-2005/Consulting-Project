@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Title from "./Title";
 
 // Theme
@@ -125,9 +125,9 @@ export default function ClientFeedback({
   const maxIndex = Math.max(0, TESTIMONIALS.length - perView);
 
   // Clamp index whenever perView changes
-  useEffect(() => {
-    setIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
+  // useEffect(() => {
+  //   setIndex((prev) => Math.min(prev, maxIndex));
+  // }, [maxIndex]);
 
   const goNext = useCallback(() => {
     setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));

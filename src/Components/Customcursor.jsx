@@ -1,21 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // Theme
 const ACCENT = "#F75709";
 
-/**
- * CustomCursor
- * Renders a small solid dot that tracks the mouse instantly, plus a larger
- * ring outline that follows with smooth, eased "lag" — matching the
- * reference image (small orange dot inside a thin orange circle).
- *
- * Usage: mount this once near the root of your app, e.g. in App.jsx:
- *   <CustomCursor />
- *   <YourRoutesOrPages />
- *
- * It automatically hides the native cursor on desktop (via the CSS
- * injected below) and disables itself on touch devices.
- */
 export default function CustomCursor() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
