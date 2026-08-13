@@ -3,7 +3,7 @@ import Title from "./Title";
 
 export default function AboutCompany() {
   return (
-    <section className="md:max-w-8xl mx-auto px-6 py-10 md:py-20 overflow-hidden">
+    <section className="md:max-w-6xl mx-auto px-10 md:px-0 py-10 md:py-20 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16  items-center">
         <div className="relative">
           <div

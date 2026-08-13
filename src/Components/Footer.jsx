@@ -1,24 +1,81 @@
+import { Link } from "react-router-dom";
+
 const FOOTER_COLUMNS = [
   {
     title: "Features",
     links: [
-      "Advanced Analytics",
-      "Data Exploration",
-      "Auto Track",
-      "Data Insights",
+      {
+        name: "Advanced Analytics",
+        path: "/advanced-analytics",
+      },
+      {
+        name: "Data Exploration",
+        path: "/data-exploration",
+      },
+      {
+        name: "Auto Track",
+        path: "/auto-track",
+      },
+      {
+        name: "Data Insights",
+        path: "/data-insights",
+      },
     ],
   },
   {
     title: "Menu",
-    links: ["Article & Blog", "Documentation", "Learn Gulaly", "Tutorials"],
+    links: [
+      {
+        name: "Article & Blog",
+        path: "/blog",
+      },
+      {
+        name: "Documentation",
+        path: "/documentation",
+      },
+      {
+        name: "Learn Gulaly",
+        path: "/learn-gulaly",
+      },
+      {
+        name: "Tutorials",
+        path: "/tutorials",
+      },
+    ],
   },
   {
     title: "Company",
-    links: ["About Us", "Our Team"],
+    links: [
+      {
+        name: "About Us",
+        path: "/about",
+      },
+      {
+        name: "Our Team",
+        path: "/team",
+      },
+    ],
   },
   {
     title: "Resources",
-    links: ["Blog and Article", "Community", "Documentation", "Tutorials"],
+    links: [
+      {
+        name: "Blog and Article",
+        path: "/blog",
+      },
+      {
+        name: "Community",
+        path: "/community",
+      },
+      {
+        name: "Documentation",
+        path: "/documentation",
+      },
+      {
+        name: "Tutorials",
+        path: "/tutorials",
+      },
+    ],
   },
 ];
 
@@ -43,14 +100,19 @@ const SOCIALS = [
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
     <footer className="relative bg-[#0d2b26] px-6 pt-16 pb-8">
       <div className="max-w-6xl mx-auto">
+
         {/* Top: logo + description + socials */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-10">
+
           <div className="max-w-md">
             <div className="flex items-center gap-2 mb-4">
               <img
@@ -58,16 +120,19 @@ export default function Footer() {
                 alt="Legacy Vault Logo"
                 className="h-10 w-auto object-contain drop-shadow-[0_0_2px_#000]"
               />
+
               <span className="font-black text-white text-xl uppercase tracking-wide">
                 Legacy Vault
               </span>
             </div>
+
             <p className="text-white font-semibold text-sm leading-relaxed">
               At the core of our ethos lies a dedication to our clients. Your
               success is our shared triumph, and we're.
             </p>
           </div>
 
+          {/* Social Icons */}
           <div className="flex items-center gap-3">
             {SOCIALS.map((social) => (
               <a
@@ -91,34 +156,43 @@ export default function Footer() {
         <div className="h-px bg-white/10 mb-12" />
 
         {/* Link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-40 mb-12">
+
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
+
               <h4 className="font-black text-white uppercase text-base mb-5 tracking-wide">
                 {col.title}
               </h4>
+
               <ul className="space-y-3 text-white/60 text-sm">
+
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
                       className="hover:text-[#F75709] transition-colors duration-300"
                     >
-                      {link}
-                    </a>
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
+
               </ul>
             </div>
           ))}
+
         </div>
 
         {/* Bottom bar */}
         <div className="h-px bg-white/10 mb-6" />
+
         <div className="text-center font-medium text-white text-sm">
-          &copy;2026<span className="text-[#F75709]">LegacyVault</span>. All
+          &copy;2026
+          <span className="text-[#F75709]">LegacyVault</span>. All
           rights reserved.
         </div>
+
         <div className="text-white text-sm text-center">
           <a
             href="https://kudanthaiinfotech.in/"

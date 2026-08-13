@@ -81,7 +81,7 @@ const Service = () => {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-12">
+    <section className="max-w-6xl mx-auto  px-6 lg:px-0 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {services.map((service, index) => (
           <div
@@ -95,12 +95,12 @@ const Service = () => {
             <div
               data-aos="zoom-in"
               data-aos-delay={index * 150 + 200}
-              className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#F75709]"
+              className="w-16 h-16  rounded-lg flex items-center justify-center mb-6 transition-colors duration-300 group-hover:!bg-[#F75709]"
               style={{ backgroundColor: service.iconBg }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`w-8 h-8 ${service.iconColor}`}
+                className={`w-8 h-8 ${service.iconColor} group-hover:!text-white`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
