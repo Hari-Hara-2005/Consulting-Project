@@ -74,7 +74,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16">
+    <section className="max-w-6xl mx-auto px-6 md:py-16">
       <div
         className="relative overflow-hidden bg-[#f4f6f5] rounded-3xl px-8 md:px-14 py-14"
         data-aos="fade-up"

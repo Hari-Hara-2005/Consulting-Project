@@ -2,8 +2,8 @@ const Service = () => {
   const services = [
     {
       title: "Finance Planning",
-      iconBg: "#d9a15c",
-      iconColor: "text-white",
+      iconBg: "#a9d18e",
+      iconColor: "text-[#0d2b26]",
       icon: (
         <>
           <path
@@ -114,7 +114,7 @@ const Service = () => {
             <h3
               data-aos="fade-up"
               data-aos-delay={index * 150 + 300}
-              className="title-font text-2xl text-[#0d2b26] uppercase mb-3"
+              className="title-font font-extrabold text-2xl text-[#0d2b26] uppercase mb-3"
             >
               {service.title}
             </h3>
@@ -123,7 +123,7 @@ const Service = () => {
             <p
               data-aos="fade-up"
               data-aos-delay={index * 150 + 400}
-              className="text-gray-500 leading-relaxed"
+              className="text-gray-800 font-semibold leading-relaxed"
             >
               Our team prioritizes usability and accessibility to ensure that
               every visitor enjoys a seamless intuitive.

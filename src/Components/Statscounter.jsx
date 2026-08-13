@@ -70,7 +70,7 @@ function StatItem({ stat, shouldStart, isLast, index }) {
       <h4 className="font-black text-lg text-[#0d2b26] uppercase mb-1 tracking-wide">
         {stat.label}
       </h4>
-      <p className="text-gray-500 text-sm">{stat.desc}</p>
+      <p className="text-gray-800 font-semibold text-sm">{stat.desc}</p>
     </div>
   );
 }

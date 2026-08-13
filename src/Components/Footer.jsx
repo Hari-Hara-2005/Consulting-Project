@@ -14,7 +14,7 @@ const FOOTER_COLUMNS = [
   },
   {
     title: "Company",
-    links: ["About Us", "Our Team", "Press"],
+    links: ["About Us", "Our Team"],
   },
   {
     title: "Resources",
@@ -53,14 +53,16 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-10">
           <div className="max-w-md">
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-7 h-7 rounded-full bg-[conic-gradient(from_180deg,#a9d18e,#F75709,#a9d18e)] flex items-center justify-center">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0d2b26]" />
-              </span>
+              <img
+                src="/assets/LV1.png"
+                alt="Legacy Vault Logo"
+                className="h-10 w-auto object-contain drop-shadow-[0_0_2px_#000]"
+              />
               <span className="font-black text-white text-xl uppercase tracking-wide">
-                Prozen
+                Legacy Vault
               </span>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
+            <p className="text-white font-semibold text-sm leading-relaxed">
               At the core of our ethos lies a dedication to our clients. Your
               success is our shared triumph, and we're.
             </p>
@@ -113,9 +115,19 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="h-px bg-white/10 mb-6" />
-        <div className="text-center text-white/70 text-sm">
-          &copy;2025<span className="text-[#F75709]">Hurraytheme</span>. All
+        <div className="text-center font-medium text-white text-sm">
+          &copy;2026<span className="text-[#F75709]">LegacyVault</span>. All
           rights reserved.
+        </div>
+        <div className="text-white text-sm text-center">
+          <a
+            href="https://kudanthaiinfotech.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-white transition-colors hover:text-black"
+          >
+            Developed by Kudanthai Infotech
+          </a>
         </div>
       </div>
 

@@ -29,7 +29,7 @@ const TEAM = [
 
 export default function TeamMembers() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
+    <section className="md:max-w-8xl mx-auto px-6 py-20">
       {/* Title */}
       <div className="mb-16" data-aos="fade-up" data-aos-duration="900">
         <Title
@@ -37,9 +37,7 @@ export default function TeamMembers() {
           subtitle="Our Team Members"
           title={
             <>
-              Get Consulting From Our
-              <br />
-              Best Consultants
+            Get Consulting From Our Best Consultants
             </>
           }
         />

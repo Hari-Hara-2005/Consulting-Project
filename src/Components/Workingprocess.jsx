@@ -39,27 +39,21 @@ export default function WorkingProcess() {
         <div className="mb-16" data-aos="fade-up">
           <Title
             align="centre"
-            subtitle="Our Services"
+            subtitle="Working Progress"
             subtitleColor="#f36f21"
             titleColor="#ffffff"
-            title={
-              <>
-                Versatile Range
-                <br />
-                Of Business Solutions
-              </>
-            }
+            title={<>We make things easy for you to start</>}
           />
         </div>
 
         {/* Timeline */}
         <div className="relative flex flex-col md:flex-row md:justify-between gap-14 md:gap-0">
           {/* continuous vertical line for mobile, spans full stack */}
-          <div
+          {/* <div
             className="md:hidden absolute left-1/2 top-6 bottom-6 w-px bg-white/15 -translate-x-1/2 z-0"
             data-aos="fade"
             data-aos-delay="200"
-          />
+          /> */}
 
           {/* horizontal line for desktop, aligned through badge centers */}
           <div
@@ -83,7 +77,7 @@ export default function WorkingProcess() {
               <h3 className="font-black text-xl text-white uppercase mb-2 tracking-wide">
                 {item.title}
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed max-w-[240px]">
+              <p className="text-white text-sm leading-relaxed max-w-[240px]">
                 {item.desc}
               </p>
             </div>

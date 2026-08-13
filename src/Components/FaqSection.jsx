@@ -136,16 +136,10 @@ export default function FaqSection() {
             <Title
               align="left"
               subtitle="FAQ's"
-              title={
-                <>
-                  Frequently Asked
-                  <br />
-                  Asked Question
-                </>
-              }
+              title={<>Frequently Asked Asked Question</>}
             />
 
-            <p className="text-slate-500 leading-relaxed mt-5 mb-8 max-w-md">
+            <p className="text-gray-800 font-semibold leading-relaxed mt-5 mb-8 max-w-md">
               Morem ipsum dolor sit amet, consectetur adipiscing elita florai
               psum dolor sit amet, amet consecteture.
             </p>

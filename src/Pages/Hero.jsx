@@ -149,6 +149,8 @@ export default function Hero() {
           <div className="flex-1">
             <h1
               className="
+              mt-10
+              md:mt-0
               text-[2.4rem]
               font-black
               uppercase
@@ -156,7 +158,7 @@ export default function Hero() {
               tracking-[0.01em]
               text-white
               sm:text-[3.2rem]
-              md:text-[3.6rem]
+              md:text-[5.2rem]
             "
             >
               Innovative
@@ -171,31 +173,21 @@ export default function Hero() {
             <p
               className="
               mt-6
-              max-w-[420px]
+              max-w-[520px]
               text-base
               leading-[1.6]
-              text-white/75
+              text-white
+              font-semibold
             "
             >
               Our team prioritizes usability and accessibility to ensure that
               every visitor enjoys a seamless intuitive.
             </p>
 
-            <p
-              className="
-              mt-6
-              max-w-[420px]
-              text-base
-              leading-[1.6]
-              text-white/75
-            "
-            >
-              Kudanthai Infotech
-            </p>
-
             <button
               className="
               mt-8
+              md:mt-4
               rounded-full
               bg-[#f36f21]
               px-7
@@ -240,7 +232,8 @@ export default function Hero() {
                 className="
                 block
                 w-full
-                rounded-3xl
+                rounded-full
+                p-5
               "
               />
 
@@ -253,7 +246,8 @@ export default function Hero() {
                 delay={0}
                 duration={4500}
                 className="
-                bottom-[-20px]
+                bottom-[50px]
+                md:bottom-[175px]
                 left-0
                 sm:left-[-20px]
               "
@@ -270,7 +264,8 @@ export default function Hero() {
                 duration={5500}
                 className="
                 right-0
-                top-[38%]
+                top-[-2%]
+                md:top-[38%]
                 sm:right-[-10px]
               "
               />
@@ -278,17 +273,11 @@ export default function Hero() {
           </div>
         </div>
       </section>
-      <section>
+      <section className="mt-16">
         <Title
           align="center"
           subtitle="Our Services"
-          title={
-            <>
-              Versatile Range
-              <br />
-              Of Business Solutions
-            </>
-          }
+          title={<>Versatile Range Of Business Solutions</>}
         />
         <Service />
       </section>

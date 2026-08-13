@@ -53,7 +53,7 @@ export default function Title({
       <h2
         className={`
           max-w-[750px]
-          text-[42px]
+          text-[23px]
           font-black
           uppercase
           leading-[1.05]

@@ -56,49 +56,28 @@ function NavLinkItem({ label, to, onClick, mobile, delay }) {
 function Logo() {
   return (
     <div
-      className="flex items-center gap-2"
-      data-aos="fade-right"
-      data-aos-duration="600"
-      data-aos-once="true"
-    >
-      <div
-        className="
-          relative
-          flex
-          h-8
-          w-8
-          items-center
-          justify-center
-          rounded-full
-          bg-[#f36f21]
-        "
-      >
-        <div
-          className="
-            flex
-            h-[22px]
-            w-[22px]
-            items-center
-            justify-center
-            rounded-full
-            bg-[#0d3b34]
-          "
-        >
-          <Circle size={9} fill="white" className="text-white" />
-        </div>
-      </div>
+  className="flex items-center gap-2"
+  data-aos="fade-right"
+  data-aos-duration="600"
+  data-aos-once="true"
+>
+  <img
+    src="/assets/LV.tuxpi.png"
+    alt="Legacy Vault Logo"
+    className="w-auto h-10 object-contain drop-shadow-[0_0_2px_#000]"
+  />
 
-      <span
-        className="
-          text-[1.3rem]
-          font-extrabold
-          tracking-[0.02em]
-          text-[#0d3b34]
-        "
-      >
-        PROZEN
-      </span>
-    </div>
+  <span
+    className="
+      text-[1.3rem]
+      font-extrabold
+      tracking-[0.02em]
+      text-[#0d3b34]
+    "
+  >
+    LEGACY VAULT
+  </span>
+</div>
   );
 }
 

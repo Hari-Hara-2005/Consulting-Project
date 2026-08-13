@@ -184,7 +184,7 @@ export default function Pricing() {
             data-aos-offset="150"
           >
             <p
-              className="font-bold tracking-wide text-sm mb-3"
+              className="text-xl font-bold tracking-wide mb-3"
               style={{ color: THEME.accent }}
               data-aos="fade-up"
               data-aos-duration="700"
@@ -193,19 +193,17 @@ export default function Pricing() {
             </p>
 
             <h2
-              className="text-5xl font-extrabold leading-[1.05] mb-6"
+              className="text-4xl md:text-5xl font-extrabold leading-[1.05] mb-6"
               style={{ color: THEME.primary }}
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="100"
             >
-              COACHING PACKAGES
-              <br />
-              THAT FIT YOU
+              COACHING PACKAGES THAT FIT YOU
             </h2>
 
             <p
-              className="text-slate-500 leading-relaxed mb-8"
+              className="text-gray-800 font-semibold leading-relaxed mb-8"
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="200"

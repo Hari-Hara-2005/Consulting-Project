@@ -25,21 +25,21 @@ const CONTACT_ITEMS = [
   {
     icon: Phone,
     label: "Phone number",
-    value: "+44 204 577 0077",
+    value: "+91 93459 69545",
   },
   {
     icon: MessageSquare,
     label: "Email address",
-    value: "prozen@gmail.com",
+    value: "legacyvault@gmail.com",
   },
   {
     icon: MapPin,
     label: "Office Address",
-    value: "Washington Ave, NY",
+    value: "Kumbakonam, TN",
   },
 ];
 
-const CONTACT_WHATSAPP_NUMBER = "9952857016";
+const CONTACT_WHATSAPP_NUMBER = "9345969545";
 
 const SUBJECT_OPTIONS = [
   "General inquiry",
@@ -50,11 +50,11 @@ const SUBJECT_OPTIONS = [
 ];
 
 const LOCATION = {
-  name: "BNS Center",
-  address: "Sector 7, Dhaka 1230",
+  name: "LV Center",
+  address: "Kumbakonam",
   rating: 4.0,
   reviewCount: "6,406",
-  mapQuery: "BNS Center, Sector 7, Dhaka 1230",
+  mapQuery: "LV Center, Kumbakonam",
 };
 
 const Contact = () => {
