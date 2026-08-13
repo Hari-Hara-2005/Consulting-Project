@@ -233,7 +233,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileOpen(false)}
               />
             ))}
-
+            <Link to="/service-booking">
             <button
               onClick={() => setIsMobileOpen(false)}
               className="
@@ -254,6 +254,7 @@ export default function Navbar() {
             >
               Let's Get In 1:1
             </button>
+            </Link>
           </div>
         </div>
       </nav>
