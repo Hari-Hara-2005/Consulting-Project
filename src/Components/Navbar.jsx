@@ -252,7 +252,7 @@ export default function Navbar() {
                 hover:bg-[#a3c369]
               "
             >
-              Let's Get In Touch
+              Let's Get In 1:1
             </button>
           </div>
         </div>
