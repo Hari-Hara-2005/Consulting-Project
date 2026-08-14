@@ -235,7 +235,7 @@ export default function Hero() {
             >
               {/* Main Image */}
               <img
-                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80&auto=format&fit=crop"
+                src="assets/home4.png"
                 alt="Smiling business professional"
                 className="
         block

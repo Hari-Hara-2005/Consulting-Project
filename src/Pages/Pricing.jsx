@@ -259,37 +259,37 @@ export default function Pricing() {
 
             <PricingCard
               packageName="Basic Package"
-              price="299"
+              price="399"
               highlighted={false}
               delay={0}
               features={[
-                ["5 Pages", "Responsive Design"],
-                ["Basic SEO", "Contact Form"],
-                ["1 Revision", "Email Support"],
+                ["Basic financial", "Asset categorization"],
+                ["Basic risk-awareness checklist", " Basic industry overview"],
+                ["Short competitor comparison", "Digital PDF report"],
               ]}
             />
 
             <PricingCard
               packageName="Standard Package"
-              price="399"
+              price="999"
               highlighted={true}
               delay={150}
               features={[
-                ["10 Pages", "Responsive Design"],
-                ["Advanced SEO", "Contact Form"],
-                ["3 Revisions", "Priority Support"],
+                ["Competitor business model", "Product/service categories"],
+                ["Target customer segment", "Marketing approach"],
+                ["Online presence", " Differentiation opportunities"],
               ]}
             />
 
             <PricingCard
               packageName="Premium Package"
-              price="999"
+              price="1,999"
               highlighted={false}
               delay={300}
               features={[
-                ["Unlimited Pages", "Premium Design"],
-                ["Advanced SEO", "Google Analytics"],
-                ["Unlimited Revisions", "Priority Support"],
+                ["Liability overview", "Concentration-risk observations"],
+                ["Personal/business asset separation", "High-level wealth-structure observations"],
+                ["Distribution channels", "Marketing strategy"],
               ]}
             />
           </div>
