@@ -72,7 +72,7 @@ export default function PageTitleBanner({ title, breadcrumbs }) {
                 ) : (
                   <a
                     href={crumb.href}
-                    className="text-white hover:text-[#a9d18e] transition-colors duration-300"
+                    className="text-white hover:text-yellow-700 transition-colors duration-300"
                   >
                     {crumb.label}
                   </a>
