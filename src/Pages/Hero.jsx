@@ -123,11 +123,11 @@ export default function Hero() {
         className="
         overflow-hidden
         
-        bg-[#F8F8F6]
+        bg-black
         px-6
         py-8
         md:px-8
-        md:py-10
+        md:py-5
       "
       >
         <Navbar />
@@ -158,7 +158,7 @@ export default function Hero() {
               uppercase
               leading-[1.05]
               tracking-[0.01em]
-              text-black
+              text-white
               sm:text-[3.2rem]
               md:text-[5.2rem]
             "
@@ -178,7 +178,7 @@ export default function Hero() {
               max-w-[520px]
               text-base
               leading-[1.6]
-              text-yellow-500
+              text-white
               font-semibold
             "
             >
@@ -200,8 +200,8 @@ export default function Hero() {
               tracking-[0.03em]
               text-black
               transition-colors
-              hover:bg-[#0A0A0A]
-              hover:text-white
+              hover:bg-white
+              hover:text-black
             "
             >
               Let's Get In Touch

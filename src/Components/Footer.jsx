@@ -107,7 +107,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#F8F8F6] px-6 pt-16 pb-8">
+    <footer className="relative bg-black px-6 pt-16 pb-8">
       <div className="max-w-6xl mx-auto">
 
         {/* Top: logo + description + socials */}
@@ -121,7 +121,7 @@ export default function Footer() {
                 className="h-10 w-auto object-contain drop-shadow-[0_0_2px_#000]"
               />
 
-              <span className="font-black text-black text-xl uppercase tracking-wide">
+              <span className="font-black text-white text-xl uppercase tracking-wide">
                 Legacy Vault
               </span>
             </div>
@@ -139,12 +139,12 @@ export default function Footer() {
                 key={social.label}
                 href="#"
                 aria-label={social.label}
-                className="w-10 h-10 rounded-lg bg-black  hover:bg-[#f7bd02] text-white flex items-center justify-center transition-colors duration-300"
+                className="w-10 h-10 rounded-lg bg-white  hover:bg-[#f7bd02] text-black flex items-center justify-center transition-colors duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-4 h-4 fill-white"
+                  className="w-4 h-4 fill-black"
                 >
                   <path d={social.path} />
                 </svg>
@@ -153,7 +153,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="h-px bg-black mb-12" />
+        <div className="h-px bg-yellow-500 mb-12" />
 
         {/* Link columns */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-40 mb-12">
@@ -161,11 +161,11 @@ export default function Footer() {
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
 
-              <h4 className="font-black text-black uppercase text-base mb-5 tracking-wide">
+              <h4 className="font-black text-white uppercase text-base mb-5 tracking-wide">
                 {col.title}
               </h4>
 
-              <ul className="space-y-3 text-black font-semibold text-sm">
+              <ul className="space-y-3 text-white font-semibold text-sm">
 
                 {col.links.map((link) => (
                   <li key={link.name}>
@@ -185,20 +185,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="h-px bg-black mb-6" />
+        <div className="h-px bg-yellow-500 mb-6" />
 
-        <div className="text-center font-bold text-black text-sm">
+        <div className="text-center font-bold text-white text-sm">
           &copy;2026
           <span className="text-[#f7bd02]">LegacyVault</span>. All
           rights reserved.
         </div>
 
-        <div className="text-black  text-sm text-center">
+        <div className="text-white  text-sm text-center">
           <a
             href="https://kudanthaiinfotech.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-bold text-black transition-colors hover:text-black"
+            className="text-sm font-bold text-white transition-colors hover:text-white"
           >
             Developed by Kudanthai Infotech
           </a>
