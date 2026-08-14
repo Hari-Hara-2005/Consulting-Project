@@ -52,3 +52,18 @@ html {
     scrollbar-color: #f75709 #f1f1f1;
   }
 }
+
+@keyframes floatSmooth {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-smooth {
+  animation: floatSmooth 4s ease-in-out infinite;
+}

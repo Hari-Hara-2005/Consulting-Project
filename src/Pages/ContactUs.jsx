@@ -2,7 +2,7 @@ import { useState } from "react";
 import PageTitleBanner from "../Components/Pagetitlebanner";
 import {
   Phone,
-  MessageSquare,
+  MailCheck,
   MapPin,
   ArrowUp,
   ExternalLink,
@@ -28,7 +28,7 @@ const CONTACT_ITEMS = [
     value: "+91 93459 69545",
   },
   {
-    icon: MessageSquare,
+    icon: MailCheck,
     label: "Email address",
     value: "legacyvault@gmail.com",
   },

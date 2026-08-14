@@ -2,6 +2,7 @@ import React from "react";
 import PageTitleBanner from "../Components/Pagetitlebanner";
 import FaqSection from "../Components/FaqSection";
 import Footer from "../Components/Footer";
+import { Link } from "react-router-dom";
 
 // Theme
 const THEME = {
@@ -45,7 +46,13 @@ const FEATURES = [
   ["Tracking sheets", "Private client portal"],
 ];
 
-function PricingCard({ highlighted = false, delay = 0 }) {
+function PricingCard({
+  highlighted = false,
+  delay = 0,
+  packageName = "Basic Package",
+  price = "299",
+  features = [],
+}) {
   return (
     <div
       data-aos="fade-left"
@@ -78,7 +85,7 @@ function PricingCard({ highlighted = false, delay = 0 }) {
             color: highlighted ? THEME.secondary : THEME.primary,
           }}
         >
-          Basic Package
+          {packageName}
         </p>
 
         <p
@@ -87,11 +94,11 @@ function PricingCard({ highlighted = false, delay = 0 }) {
             color: highlighted ? "#ffffff" : THEME.primary,
           }}
         >
-          $199
+          ${price}
           <span
             className="text-base font-medium align-baseline ml-1"
             style={{
-              color: highlighted ? "#cbd5c9" : "#64748b",
+              color: highlighted ? "#cbd5e1" : "#64748b",
             }}
           >
             /month
@@ -101,7 +108,9 @@ function PricingCard({ highlighted = false, delay = 0 }) {
         <a
           href="#"
           className="inline-flex items-center gap-1.5 font-semibold text-sm transition-all duration-300 hover:gap-3 hover:opacity-80"
-          style={{ color: THEME.accent }}
+          style={{
+            color: THEME.accent,
+          }}
         >
           READ MORE
           <ArrowIcon />
@@ -123,8 +132,9 @@ function PricingCard({ highlighted = false, delay = 0 }) {
         data-aos-duration="700"
         data-aos-delay={delay + 250}
       >
-        {FEATURES.map(([left, right], i) => (
+        {features.map((feature, i) => (
           <React.Fragment key={i}>
+            {/* Left Feature */}
             <div className="flex items-center gap-2.5">
               <CheckIcon color={highlighted ? THEME.secondary : "#22c55e"} />
 
@@ -133,10 +143,11 @@ function PricingCard({ highlighted = false, delay = 0 }) {
                   color: highlighted ? "#ffffff" : THEME.primary,
                 }}
               >
-                {left}
+                {feature[0]}
               </span>
             </div>
 
+            {/* Right Feature */}
             <div className="flex items-center gap-2.5">
               <CheckIcon color={highlighted ? THEME.secondary : "#22c55e"} />
 
@@ -145,7 +156,7 @@ function PricingCard({ highlighted = false, delay = 0 }) {
                   color: highlighted ? "#ffffff" : THEME.primary,
                 }}
               >
-                {right}
+                {feature[1]}
               </span>
             </div>
           </React.Fragment>
@@ -213,26 +224,58 @@ export default function Pricing() {
               organization. Whether you're seeking personal.
             </p>
 
-            <button
-              data-aos="zoom-in"
-              data-aos-duration="700"
-              data-aos-delay="300"
-              className="font-bold text-sm tracking-wide px-7 py-4 rounded-lg text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
-              style={{
-                backgroundColor: THEME.accent,
-              }}
-            >
-              GET ALL TOUCH
-            </button>
+            <Link to="/contact-us">
+              <button
+                data-aos="zoom-in"
+                data-aos-duration="700"
+                data-aos-delay="300"
+                className="font-bold text-sm tracking-wide px-7 py-4 rounded-lg text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
+                style={{
+                  backgroundColor: THEME.accent,
+                }}
+              >
+                GET ALL TOUCH
+              </button>
+            </Link>
           </div>
 
           {/* Right column - pricing cards */}
           <div className="flex flex-col gap-6">
-            <PricingCard delay={0} />
+            <PricingCard
+              packageName="Basic Package"
+              price="299"
+              highlighted={false}
+              delay={0}
+              features={[
+                ["5 Pages", "Responsive Design"],
+                ["Basic SEO", "Contact Form"],
+                ["1 Revision", "Email Support"],
+              ]}
+            />
 
-            <PricingCard highlighted delay={150} />
+            <PricingCard
+              packageName="Standard Package"
+              price="399"
+              highlighted={true}
+              delay={150}
+              features={[
+                ["10 Pages", "Responsive Design"],
+                ["Advanced SEO", "Contact Form"],
+                ["3 Revisions", "Priority Support"],
+              ]}
+            />
 
-            <PricingCard delay={300} />
+            <PricingCard
+              packageName="Premium Package"
+              price="999"
+              highlighted={false}
+              delay={300}
+              features={[
+                ["Unlimited Pages", "Premium Design"],
+                ["Advanced SEO", "Google Analytics"],
+                ["Unlimited Revisions", "Priority Support"],
+              ]}
+            />
           </div>
         </div>
       </section>

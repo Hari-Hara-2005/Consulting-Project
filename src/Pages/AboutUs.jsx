@@ -8,7 +8,7 @@ import WorkingProcess from "../Components/Workingprocess";
 
 const About = () => {
   return (
-    <section>
+    <section >
       <PageTitleBanner
         title="About Us"
         breadcrumbs={[

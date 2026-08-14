@@ -30,9 +30,9 @@ function NavLinkItem({ label, to, onClick, mobile, delay }) {
             font-bold
             tracking-[0.03em]
             uppercase
-            text-[#0d3b34]
+            text-black
             transition-colors
-            hover:text-[#f36f21]
+            hover:text-[#f7bd02]
           `
           : `
             flex items-center
@@ -41,10 +41,10 @@ function NavLinkItem({ label, to, onClick, mobile, delay }) {
             font-bold
             tracking-[0.03em]
             uppercase
-            text-[#0d3b34]
+            text-black
             transition-colors
             hover:bg-transparent
-            hover:text-[#f36f21]
+            hover:text-[#f7bd02]
           `
       }
     >
@@ -72,7 +72,7 @@ function Logo() {
       text-[1.3rem]
       font-extrabold
       tracking-[0.02em]
-      text-[#0d3b34]
+      text-black
     "
   >
     LEGACY VAULT
@@ -174,16 +174,17 @@ export default function Navbar() {
               hidden
               lg:block
               rounded-full
-              bg-[#b7d17e]
+              bg-[#f7bd02]
               px-6
               py-3.5
               text-[0.8rem]
               font-bold
               tracking-[0.03em]
               uppercase
-              text-[#0d3b34]
+              text-black
               transition-colors
-              hover:bg-[#a3c369]
+              hover:bg-black
+              hover:text-white
             "
             >
               Let's Get In 1:1
@@ -201,10 +202,11 @@ export default function Navbar() {
               items-center
               justify-center
               rounded-full
-              bg-[#0d3b34]/5
-              text-[#0d3b34]
+              bg-[#f7bd02]
+              text-black
               transition-colors
-              hover:bg-[#0d3b34]/10
+              hover:bg-black
+              hover:text-white
               lg:hidden
             "
           >
@@ -240,16 +242,17 @@ export default function Navbar() {
                 mt-2
                 w-full
                 rounded-full
-                bg-[#b7d17e]
+                bg-[#f7bd02]
                 px-6
                 py-3.5
                 text-[0.8rem]
                 font-bold
                 tracking-[0.03em]
                 uppercase
-                text-[#0d3b34]
+                text-black
                 transition-colors
-                hover:bg-[#a3c369]
+                hover:bg-black
+                hover:text-white
               "
             >
               Let's Get In 1:1

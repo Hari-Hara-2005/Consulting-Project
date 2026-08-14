@@ -2,20 +2,9 @@ import { useEffect, useState } from "react";
 import {
   Users,
   Briefcase,
-  Heart,
-  Lightbulb,
-  GraduationCap,
-  Paintbrush,
-  Code2,
   Monitor,
   Scale,
-  Sparkles,
-  Ticket,
-  ThumbsUp,
-  Home,
-  Rocket,
-  Star,
-  X,
+  ShieldCheck
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -28,19 +17,9 @@ const THEME = {
 const CATEGORIES = [
   { name: "Coaching", icon: Users },
   { name: "Consulting", icon: Briefcase },
-  { name: "Therapy & Counseling", icon: Heart },
-  { name: "Health & Wellness", icon: Lightbulb },
-  { name: "Education & Tutoring", icon: GraduationCap },
-  { name: "Creative Services", icon: Paintbrush },
-  { name: "Tech & Development", icon: Code2 },
   { name: "Marketing & Growth", icon: Monitor },
   { name: "Legal & Finance", icon: Scale },
-  { name: "Spiritual & Faith", icon: Sparkles },
-  { name: "Beauty & Personal Care", icon: Sparkles },
-  { name: "Events & Entertainment", icon: Ticket },
-  { name: "Pets & Animals", icon: ThumbsUp },
-  { name: "Home & Lifestyle", icon: Home },
-  { name: "Sports & Recreation", icon: Rocket },
+  { name: "Insurance", icon: ShieldCheck}
 ];
 
 // Sample professionals shown for whichever category is opened.

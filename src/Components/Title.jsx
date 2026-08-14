@@ -2,8 +2,8 @@ export default function Title({
   subtitle,
   title,
   align = "center",
-  subtitleColor = "#f36f21",
-  titleColor = "#073b38",
+  subtitleColor = "#f7bd02",
+  titleColor = "#0A0A0A",
 }) {
   const alignment = {
     left: {

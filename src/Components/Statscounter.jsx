@@ -2,19 +2,19 @@ import { useEffect, useRef, useState } from "react";
 
 const STATS = [
   {
-    target: 10,
+    target: 5,
     suffix: "K",
     label: "Years In Business",
     desc: "Creating the successful path",
   },
   {
-    target: 450,
+    target: 100,
     suffix: "",
     label: "Projects Delivered",
-    desc: "with client satisfaction in 6 years",
+    desc: "with client satisfaction in 5+ years",
   },
   {
-    target: 37,
+    target: 10,
     suffix: "",
     label: "Team Members",
     desc: "Working for your success",
@@ -62,15 +62,15 @@ function StatItem({ stat, shouldStart, isLast, index }) {
       data-aos-delay={index * 150}
       data-aos-duration="700"
     >
-      <p className="font-black text-5xl text-[#0d2b26] mb-3 tracking-tight">
+      <p className="font-black text-5xl text-black mb-3 tracking-tight">
         {value}
         {stat.suffix}
-        <span className="text-[#F75709]">+</span>
+        <span className="text-[#f7bd02]">+</span>
       </p>
-      <h4 className="font-black text-lg text-[#0d2b26] uppercase mb-1 tracking-wide">
+      <h4 className="font-black text-lg black uppercase mb-1 tracking-wide">
         {stat.label}
       </h4>
-      <p className="text-gray-800 font-semibold text-sm">{stat.desc}</p>
+      <p className="text-yellow-500 font-semibold text-sm">{stat.desc}</p>
     </div>
   );
 }
