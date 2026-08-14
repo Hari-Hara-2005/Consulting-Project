@@ -4,13 +4,6 @@ import FaqSection from "../Components/FaqSection";
 import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
 
-// Theme
-const THEME = {
-  primary: "#063231",
-  secondary: "#C3DF94",
-  accent: "#F75709",
-};
-
 const CheckIcon = ({ color }) => (
   <svg
     className="w-4 h-4 shrink-0"
@@ -20,7 +13,11 @@ const CheckIcon = ({ color }) => (
     stroke="currentColor"
     strokeWidth={3}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M5 13l4 4L19 7"
+    />
   </svg>
 );
 
@@ -63,12 +60,12 @@ function PricingCard({
       style={
         highlighted
           ? {
-              backgroundColor: THEME.primary,
-              borderColor: THEME.primary,
+              backgroundColor: "#0A0A0A",
+              borderColor: "#0A0A0A",
             }
           : {
-              backgroundColor: "#ffffff",
-              borderColor: "#e2e8f0",
+              backgroundColor: "#FFFFFF",
+              borderColor: "#E5E5E5",
             }
       }
     >
@@ -82,7 +79,7 @@ function PricingCard({
         <p
           className="text-lg mb-1"
           style={{
-            color: highlighted ? THEME.secondary : THEME.primary,
+            color: highlighted ? "#F7BD02" : "#0A0A0A",
           }}
         >
           {packageName}
@@ -91,37 +88,50 @@ function PricingCard({
         <p
           className="text-6xl font-extrabold leading-none mb-6"
           style={{
-            color: highlighted ? "#ffffff" : THEME.primary,
+            color: highlighted ? "#FFFFFF" : "#0A0A0A",
           }}
         >
           ${price}
+
           <span
             className="text-base font-medium align-baseline ml-1"
             style={{
-              color: highlighted ? "#cbd5e1" : "#64748b",
+              color: highlighted ? "#D6D6D6" : "#6B6B6B",
             }}
           >
             /month
           </span>
         </p>
 
-        <a
-          href="#"
-          className="inline-flex items-center gap-1.5 font-semibold text-sm transition-all duration-300 hover:gap-3 hover:opacity-80"
-          style={{
-            color: THEME.accent,
-          }}
+        <Link
+          to="/contact-us"
+          className="
+            inline-flex
+            items-center
+            gap-2
+            text-sm
+            font-bold
+            uppercase
+            tracking-wide
+            text-[#C9A227]
+            transition-all
+            duration-300
+            hover:text-[#FFFFFF]
+            hover:gap-3
+          "
         >
-          READ MORE
+          Read More
           <ArrowIcon />
-        </a>
+        </Link>
       </div>
 
       {/* Divider */}
       <div
         className="hidden sm:block w-px self-stretch"
         style={{
-          backgroundColor: highlighted ? "rgba(255,255,255,0.15)" : "#e2e8f0",
+          backgroundColor: highlighted
+            ? "rgba(255,255,255,0.15)"
+            : "#E5E5E5",
         }}
       />
 
@@ -136,11 +146,13 @@ function PricingCard({
           <React.Fragment key={i}>
             {/* Left Feature */}
             <div className="flex items-center gap-2.5">
-              <CheckIcon color={highlighted ? THEME.secondary : "#22c55e"} />
+              <CheckIcon
+                color={highlighted ? "#F7BD02" : "#F7BD02"}
+              />
 
               <span
                 style={{
-                  color: highlighted ? "#ffffff" : THEME.primary,
+                  color: highlighted ? "#FFFFFF" : "#0A0A0A",
                 }}
               >
                 {feature[0]}
@@ -149,11 +161,13 @@ function PricingCard({
 
             {/* Right Feature */}
             <div className="flex items-center gap-2.5">
-              <CheckIcon color={highlighted ? THEME.secondary : "#22c55e"} />
+              <CheckIcon
+                color={highlighted ? "#F7BD02" : "#F7BD02"}
+              />
 
               <span
                 style={{
-                  color: highlighted ? "#ffffff" : THEME.primary,
+                  color: highlighted ? "#FFFFFF" : "#0A0A0A",
                 }}
               >
                 {feature[1]}
@@ -187,6 +201,7 @@ export default function Pricing() {
       {/* Pricing Section */}
       <section className="bg-white py-20 px-6 md:px-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[420px_1fr] gap-16 items-start">
+
           {/* Left column */}
           <div
             className="lg:sticky lg:top-20"
@@ -196,7 +211,7 @@ export default function Pricing() {
           >
             <p
               className="text-xl font-bold tracking-wide mb-3"
-              style={{ color: THEME.accent }}
+              style={{ color: "#F7BD02" }}
               data-aos="fade-up"
               data-aos-duration="700"
             >
@@ -205,7 +220,7 @@ export default function Pricing() {
 
             <h2
               className="text-4xl md:text-5xl font-extrabold leading-[1.05] mb-6"
-              style={{ color: THEME.primary }}
+              style={{ color: "#0A0A0A" }}
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="100"
@@ -214,7 +229,7 @@ export default function Pricing() {
             </h2>
 
             <p
-              className="text-gray-800 font-semibold leading-relaxed mb-8"
+              className="text-yellow-500 font-semibold leading-relaxed mb-8"
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="200"
@@ -229,9 +244,9 @@ export default function Pricing() {
                 data-aos="zoom-in"
                 data-aos-duration="700"
                 data-aos-delay="300"
-                className="font-bold text-sm tracking-wide px-7 py-4 rounded-lg text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
+                className="font-bold text-sm tracking-wide px-7 py-4 rounded-lg text-black transition-all duration-300 hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
                 style={{
-                  backgroundColor: THEME.accent,
+                  backgroundColor: "#F7BD02",
                 }}
               >
                 GET ALL TOUCH
@@ -241,6 +256,7 @@ export default function Pricing() {
 
           {/* Right column - pricing cards */}
           <div className="flex flex-col gap-6">
+
             <PricingCard
               packageName="Basic Package"
               price="299"
@@ -281,7 +297,11 @@ export default function Pricing() {
       </section>
 
       {/* FAQ */}
-      <div data-aos="fade-up" data-aos-duration="900" data-aos-offset="120">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-offset="120"
+      >
         <FaqSection />
       </div>
 

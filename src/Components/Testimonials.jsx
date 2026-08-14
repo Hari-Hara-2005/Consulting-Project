@@ -3,30 +3,27 @@ import { useEffect, useRef, useState } from "react";
 const TESTIMONIALS = [
   {
     quote:
-      "Guidance transformed the way we do business. Their innovative solutions and forward-thinking approach revitalized our organization. The results speak for themselves, and we couldn't be happier with the outcome. Trusting Guidance was a wise investment in our future.",
-    name: "John Smith",
-    role: "Head of Developer",
+      "The consulting team helped us clearly understand our business challenges and create a practical strategy for growth. Their guidance gave us the confidence to make better decisions and move forward with clarity.",
+    name: "Arun Kumar",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
     rating: 5,
   },
   {
     quote:
-      "Working with this team gave us clarity we didn't have before. Their strategic guidance and hands-on support helped us scale faster than we imagined, and every milestone felt achievable with them beside us.",
-    name: "Amara Chen",
-    role: "Marketing Director",
+      "Their consulting approach was simple, practical, and focused on our actual business needs. They helped us identify opportunities, improve our strategy, and make decisions with much more confidence.",
+    name: "Priya Sharma",
     avatar:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
+    rating: 4,
   },
   {
     quote:
-      "From the first consultation to final delivery, the process was seamless. They understood our goals instantly and delivered a plan that exceeded every expectation we had.",
-    name: "Michael Ortiz",
-    role: "Operations Lead",
+      "Working with the consulting team gave our business a clear direction. Their insights and strategic recommendations helped us plan better, solve challenges faster, and build a stronger path for long-term growth.",
+    name: "Vikram Raj",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
+    rating: 3,
   },
 ];
 

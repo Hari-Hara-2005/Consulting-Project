@@ -109,27 +109,74 @@ export default function Footer() {
   return (
     <footer className="relative bg-black px-6 pt-16 pb-8">
       <div className="max-w-6xl mx-auto">
-
         {/* Top: logo + description + socials */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-10">
+          <div
+            className="flex items-center gap-2"
+            data-aos="fade-right"
+            data-aos-duration="600"
+            data-aos-once="true"
+          >
+            {/* Logo */}
+ <div
+  className="
+    shrink-0
+    flex
+    items-center
+    justify-center
+    bg-white
+    rounded-xl
+    p-[3px]
+    border
+    border-white
+  "
+>
+  <img
+    src="/assets/LV.tuxpi.png"
+    alt="Legacy Vault Logo"
+    className="
+      h-8
+      sm:h-9
+      w-auto
+      object-contain
+      rounded-lg
+    "
+  />
+</div>
 
-          <div className="max-w-md">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src="/assets/LV1.png"
-                alt="Legacy Vault Logo"
-                className="h-10 w-auto object-contain drop-shadow-[0_0_2px_#000]"
-              />
-
-              <span className="font-black text-white text-xl uppercase tracking-wide">
+            {/* Brand Name + Tagline */}
+            <div>
+              <span
+                className="
+        block
+        font-black
+        text-white
+        text-lg
+        sm:text-xl
+        uppercase
+        tracking-wide
+        leading-tight
+      "
+              >
                 Legacy Vault
               </span>
-            </div>
 
-            <p className="text-yellow-500 font-semibold text-sm leading-relaxed">
-              At the core of our ethos lies a dedication to our clients. Your
-              success is our shared triumph, and we're.
-            </p>
+              {/* Hidden on laptop and above */}
+              <p
+                className="
+        mt-0.5
+        text-[#C9A227]
+        font-semibold
+        text-[8px]
+        sm:text-[9px]
+        leading-tight
+        tracking-wide
+        uppercase
+      "
+              >
+                Excellence in every financial decision
+              </p>
+            </div>
           </div>
 
           {/* Social Icons */}
@@ -157,16 +204,13 @@ export default function Footer() {
 
         {/* Link columns */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-40 mb-12">
-
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
-
               <h4 className="font-black text-white uppercase text-base mb-5 tracking-wide">
                 {col.title}
               </h4>
 
               <ul className="space-y-3 text-white font-semibold text-sm">
-
                 {col.links.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -177,11 +221,9 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
-
               </ul>
             </div>
           ))}
-
         </div>
 
         {/* Bottom bar */}
@@ -189,8 +231,8 @@ export default function Footer() {
 
         <div className="text-center font-bold text-white text-sm">
           &copy;2026
-          <span className="text-[#f7bd02]">LegacyVault</span>. All
-          rights reserved.
+          <span className="text-[#f7bd02]">LegacyVault</span>. All rights
+          reserved.
         </div>
 
         <div className="text-white  text-sm text-center">

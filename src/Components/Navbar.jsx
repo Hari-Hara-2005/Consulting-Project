@@ -61,22 +61,55 @@ function Logo() {
   data-aos-duration="600"
   data-aos-once="true"
 >
-  <img
-    src="/assets/LV.tuxpi.png"
-    alt="Legacy Vault Logo"
-    className="w-auto h-10 object-contain drop-shadow-[0_0_2px_#000]"
-  />
+  {/* Logo */}
+  <div className="shrink-0">
+    <img
+      src="/assets/LV.tuxpi.png"
+      alt="Legacy Vault Logo"
+      className="
+        w-auto
+        h-9
+        sm:h-10
+        object-contain
+        drop-shadow-[0_0_2px_#000]
+      "
+    />
+  </div>
 
-  <span
-    className="
-      text-[1.3rem]
-      font-extrabold
-      tracking-[0.02em]
-      text-black
-    "
-  >
-    LEGACY VAULT
-  </span>
+  {/* Brand Name */}
+  <div className="min-w-0">
+    <span
+      className="
+        block
+        text-[1.1rem]
+        sm:text-[1.2rem]
+        md:text-[1.3rem]
+        font-extrabold
+        tracking-[0.02em]
+        text-black
+        leading-tight
+      "
+    >
+      LEGACY VAULT
+
+      {/* Hidden on laptop (lg) and above */}
+      <span
+        className="
+          block
+          text-[8px]
+          sm:text-[9px]
+          md:text-[10px]
+          font-semibold
+          tracking-[0.08em]
+          text-[#C9A227]
+          mt-0.5
+          
+        "
+      >
+        PRESERVING WEALTH. BUILDING LEGACY
+      </span>
+    </span>
+  </div>
 </div>
   );
 }
@@ -236,9 +269,9 @@ export default function Navbar() {
               />
             ))}
             <Link to="/service-booking">
-            <button
-              onClick={() => setIsMobileOpen(false)}
-              className="
+              <button
+                onClick={() => setIsMobileOpen(false)}
+                className="
                 mt-2
                 w-full
                 rounded-full
@@ -254,9 +287,9 @@ export default function Navbar() {
                 hover:bg-black
                 hover:text-white
               "
-            >
-              Let's Get In 1:1
-            </button>
+              >
+                Let's Get In 1:1
+              </button>
             </Link>
           </div>
         </div>

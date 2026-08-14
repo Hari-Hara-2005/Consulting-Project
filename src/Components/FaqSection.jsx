@@ -1,24 +1,18 @@
 import { useState } from "react";
 
-// Theme
-const THEME = {
-  primary: "#063231", // dark teal
-  secondary: "#C3DF94", // light green
-  accent: "#F75709", // orange
-};
-
 function Title({ align = "left", subtitle, title }) {
   return (
     <div className={align === "center" ? "text-center" : "text-left"}>
       <p
         className="font-bold tracking-wide text-sm mb-3 uppercase"
-        style={{ color: THEME.accent }}
+        style={{ color: "#C9A227" }}
       >
         {subtitle}
       </p>
+
       <h2
         className="text-4xl sm:text-5xl font-extrabold leading-[1.1]"
-        style={{ color: THEME.primary }}
+        style={{ color: "#0A0A0A" }}
       >
         {title}
       </h2>
@@ -32,20 +26,34 @@ function ToggleIcon({ open, active }) {
       className="w-4 h-4 shrink-0"
       viewBox="0 0 24 24"
       fill="none"
-      stroke={active ? "#ffffff" : THEME.primary}
+      stroke={active ? "#FFFFFF" : "#0A0A0A"}
       strokeWidth={2.5}
     >
       <path strokeLinecap="round" d="M5 12h14" />
-      {!open && <path strokeLinecap="round" d="M12 5v14" />}
+
+      {!open && (
+        <path
+          strokeLinecap="round"
+          d="M12 5v14"
+        />
+      )}
     </svg>
   );
 }
 
-function FaqItem({ question, answer, isOpen, onClick, delay }) {
+function FaqItem({
+  question,
+  answer,
+  isOpen,
+  onClick,
+  delay,
+}) {
   return (
     <div
       className="rounded-xl overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: isOpen ? THEME.primary : "#f3f4f6" }}
+      style={{
+        backgroundColor: isOpen ? "#0A0A0A" : "#F5F5F5",
+      }}
       data-aos="fade-up"
       data-aos-delay={delay}
       data-aos-duration="600"
@@ -57,11 +65,17 @@ function FaqItem({ question, answer, isOpen, onClick, delay }) {
       >
         <span
           className="font-bold text-sm sm:text-base tracking-wide"
-          style={{ color: isOpen ? "#ffffff" : THEME.primary }}
+          style={{
+            color: isOpen ? "#FFFFFF" : "#0A0A0A",
+          }}
         >
           {question}
         </span>
-        <ToggleIcon open={isOpen} active={isOpen} />
+
+        <ToggleIcon
+          open={isOpen}
+          active={isOpen}
+        />
       </button>
 
       <div
@@ -73,7 +87,9 @@ function FaqItem({ question, answer, isOpen, onClick, delay }) {
         <div className="overflow-hidden">
           <p
             className="px-6 pb-5 text-sm sm:text-base leading-relaxed"
-            style={{ color: isOpen ? "#e2e8e0" : "#475569" }}
+            style={{
+              color: isOpen ? "#E5E5E5" : "#555555",
+            }}
           >
             {answer}
           </p>
@@ -85,19 +101,22 @@ function FaqItem({ question, answer, isOpen, onClick, delay }) {
 
 const FAQS = [
   {
-    question: "HOW TO CHOOSE HEALTH INSURANCE?",
+    question:
+      "Can Legacy Vault help families plan for future wealth?",
     answer:
-      "If you ask our clients what it's like working 36, they'll about how much we care about their success.",
+      "Yes. We can help families develop structured approaches to wealth preservation, asset distribution, succession considerations, and long-term financial planning.",
   },
   {
-    question: "HOW DOES LIFE INSURANCE HELP MY FAMILY?",
+    question:
+      "What does the name Legacy Vault represent?",
     answer:
-      "Life insurance provides financial protection for your loved ones, covering expenses and securing their future in your absence.",
+      "Legacy Vault represents our core philosophy: wealth should not only be created, but also protected, structured, and thoughtfully passed forward. We aim to help clients build a financial legacy that can stand the test of time.",
   },
   {
-    question: "ESSENTIAL TYPES OF BUSINESS INSURANCE?",
+    question:
+      "What is Legacy Vault's ultimate objective?",
     answer:
-      "Business insurance typically covers liability, property, workers' compensation, and business interruption to protect your company.",
+      "Our objective is to become a trusted strategic partner for clients by helping them preserve wealth, make informed asset decisions, plan efficiently for taxes, and prepare their financial legacy for the future.",
   },
 ];
 
@@ -107,22 +126,25 @@ export default function FaqSection() {
   return (
     <section className="bg-white py-16 sm:py-20 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
         {/* Left: Image with decorative blob */}
         <div
           className="relative w-full max-w-md mx-auto lg:mx-0"
           data-aos="fade-right"
           data-aos-duration="800"
         >
-          {/* Decorative green blob */}
+          {/* Decorative gold blob */}
           <div
             className="hidden sm:block absolute -bottom-8 -left-8 w-3/4 h-3/4 rounded-[3rem] -z-10"
             style={{
-              background: `linear-gradient(135deg, ${THEME.secondary} 0%, rgba(195,223,148,0) 100%)`,
+              background:
+                "linear-gradient(135deg, #D4AF37 0%, rgba(212,175,55,0) 100%)",
             }}
             data-aos="zoom-in"
             data-aos-delay="200"
             data-aos-duration="800"
           />
+
           <img
             src="assets/2.jpg"
             alt="Advisor discussing home insurance with a happy couple"
@@ -132,16 +154,19 @@ export default function FaqSection() {
 
         {/* Right: Title + Accordion */}
         <div>
-          <div data-aos="fade-left" data-aos-duration="800">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="800"
+          >
             <Title
               align="left"
               subtitle="FAQ's"
               title={<>Frequently Asked Asked Question</>}
             />
 
-            <p className="text-gray-800 font-semibold leading-relaxed mt-5 mb-8 max-w-md">
-              Morem ipsum dolor sit amet, consectetur adipiscing elita florai
-              psum dolor sit amet, amet consecteture.
+            <p className="text-yellow-500 font-semibold leading-relaxed mt-5 mb-8 max-w-md">
+              Explore answers to common questions about our consulting
+              services, strategic planning, and business growth solutions.
             </p>
           </div>
 
@@ -152,7 +177,11 @@ export default function FaqSection() {
                 question={faq.question}
                 answer={faq.answer}
                 isOpen={openIndex === index}
-                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+                onClick={() =>
+                  setOpenIndex(
+                    openIndex === index ? -1 : index
+                  )
+                }
                 delay={200 + index * 120}
               />
             ))}
