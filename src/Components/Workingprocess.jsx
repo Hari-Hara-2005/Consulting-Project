@@ -4,17 +4,17 @@ const STEPS = [
   {
     step: "Step 01",
     title: "Onboarding",
-    desc: "Initial consultations to identify the client's goals and challenges.",
+    desc: "A smooth start to understand your goals and requirements.",
   },
   {
     step: "Step 02",
     title: "Planning",
-    desc: "Initial consultations to identify the client's goals and challenges.",
+    desc: "We create a clear strategy tailored to your goals and priorities.",
   },
   {
     step: "Step 03",
     title: "Implementation",
-    desc: "Initial consultations to identify the client's goals and challenges.",
+    desc: "We put the strategy into action with focused execution and support.",
   },
 ];
 

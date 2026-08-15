@@ -102,6 +102,44 @@ function ordinal(n) {
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
+// ---------------------------------------------------------------------
+// Validation helpers
+// ---------------------------------------------------------------------
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Accepts optional leading +, then 7–15 digits (allows spaces/dashes typed in)
+const PHONE_REGEX = /^\+?[0-9\s-]{7,15}$/;
+
+function validateField(field, value) {
+  const trimmed = value.trim();
+
+  switch (field) {
+    case "name": {
+      if (!trimmed) return "Name is required.";
+      if (trimmed.length < 2) return "Name must be at least 2 characters.";
+      if (!/^[A-Za-z\s.'-]+$/.test(trimmed))
+        return "Name can only contain letters and spaces.";
+      return "";
+    }
+    case "email": {
+      if (!trimmed) return "Email is required.";
+      if (!EMAIL_REGEX.test(trimmed))
+        return "Please enter a valid email address.";
+      return "";
+    }
+    case "phone": {
+      if (!trimmed) return "Phone number is required.";
+      if (!PHONE_REGEX.test(trimmed))
+        return "Please enter a valid phone number.";
+      const digitCount = trimmed.replace(/\D/g, "").length;
+      if (digitCount < 7 || digitCount > 15)
+        return "Phone number must have between 7 and 15 digits.";
+      return "";
+    }
+    default:
+      return "";
+  }
+}
+
 export default function BookingPage() {
   const today = new Date();
   const [viewYear, setViewYear] = useState(today.getFullYear());
@@ -119,6 +157,12 @@ export default function BookingPage() {
     email: "",
     phone: "",
     location: "Online: Google Meet",
+  });
+  const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    phone: false,
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -190,14 +234,38 @@ export default function BookingPage() {
   };
 
   const handleFormChange = (field) => (e) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    const value = e.target.value;
+    setForm((prev) => ({ ...prev, [field]: value }));
+
+    // Live-validate once the field has been touched, so errors clear as the user fixes them
+    if (touched[field]) {
+      setErrors((prev) => ({ ...prev, [field]: validateField(field, value) }));
+    }
+  };
+
+  const handleFormBlur = (field) => () => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    setErrors((prev) => ({
+      ...prev,
+      [field]: validateField(field, form[field]),
+    }));
   };
 
   const isFormValid =
-    form.name.trim() && form.email.trim() && form.phone.trim();
+    !validateField("name", form.name) &&
+    !validateField("email", form.email) &&
+    !validateField("phone", form.phone);
 
   const handleBookEvent = () => {
-    if (!isFormValid) return;
+    // Validate all fields and mark them touched so any errors become visible
+    const nameError = validateField("name", form.name);
+    const emailError = validateField("email", form.email);
+    const phoneError = validateField("phone", form.phone);
+
+    setErrors({ name: nameError, email: emailError, phone: phoneError });
+    setTouched({ name: true, email: true, phone: true });
+
+    if (nameError || emailError || phoneError) return;
 
     const dateLabel = selectedDate.toLocaleDateString("en-US", {
       weekday: "long",
@@ -229,6 +297,8 @@ export default function BookingPage() {
         phone: "",
         location: "Online: Google Meet",
       });
+      setErrors({ name: "", email: "", phone: "" });
+      setTouched({ name: false, email: false, phone: false });
       setSelectedSlot(null);
     }, 1200);
   };
@@ -261,7 +331,7 @@ export default function BookingPage() {
                 style={{ color: THEME.primary }}
               >
                 <Globe className="w-4 h-4" />
-                Asia/Calcutta
+                IST
               </div>
 
               <div className="flex items-center gap-4">
@@ -635,17 +705,28 @@ export default function BookingPage() {
                   >
                     Your name*
                   </label>
-                  <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3">
+                  <div
+                    className="flex items-center gap-2 bg-gray-100 rounded-lg px-3"
+                    style={
+                      touched.name && errors.name
+                        ? { boxShadow: "inset 0 0 0 1.5px #dc2626" }
+                        : undefined
+                    }
+                  >
                     <User className="w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       value={form.name}
                       onChange={handleFormChange("name")}
+                      onBlur={handleFormBlur("name")}
                       placeholder="Enter your full name"
                       className="w-full bg-transparent py-2.5 text-sm outline-none"
                       style={{ color: THEME.primary }}
                     />
                   </div>
+                  {touched.name && errors.name && (
+                    <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+                  )}
                 </div>
 
                 <div>
@@ -655,17 +736,28 @@ export default function BookingPage() {
                   >
                     Your email*
                   </label>
-                  <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3">
+                  <div
+                    className="flex items-center gap-2 bg-gray-100 rounded-lg px-3"
+                    style={
+                      touched.email && errors.email
+                        ? { boxShadow: "inset 0 0 0 1.5px #dc2626" }
+                        : undefined
+                    }
+                  >
                     <Mail className="w-4 h-4 text-gray-400" />
                     <input
                       type="email"
                       value={form.email}
                       onChange={handleFormChange("email")}
+                      onBlur={handleFormBlur("email")}
                       placeholder="you@example.com"
                       className="w-full bg-transparent py-2.5 text-sm outline-none"
                       style={{ color: THEME.primary }}
                     />
                   </div>
+                  {touched.email && errors.email && (
+                    <p className="mt-1 text-xs text-red-600">{errors.email}</p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -694,17 +786,28 @@ export default function BookingPage() {
                   >
                     Please enter your phone number here*
                   </label>
-                  <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3">
+                  <div
+                    className="flex items-center gap-2 bg-gray-100 rounded-lg px-3"
+                    style={
+                      touched.phone && errors.phone
+                        ? { boxShadow: "inset 0 0 0 1.5px #dc2626" }
+                        : undefined
+                    }
+                  >
                     <Phone className="w-4 h-4 text-gray-400" />
                     <input
                       type="tel"
                       value={form.phone}
                       onChange={handleFormChange("phone")}
+                      onBlur={handleFormBlur("phone")}
                       placeholder="081234 56789"
                       className="w-full bg-transparent py-2.5 text-sm outline-none"
                       style={{ color: THEME.primary }}
                     />
                   </div>
+                  {touched.phone && errors.phone && (
+                    <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
+                  )}
                 </div>
 
                 <button

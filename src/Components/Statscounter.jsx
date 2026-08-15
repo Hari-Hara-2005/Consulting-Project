@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const STATS = [
   {
     target: 5,
-    suffix: "K",
+    suffix: "",
     label: "Years In Business",
     desc: "Creating the successful path",
   },
