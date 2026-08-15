@@ -3,39 +3,34 @@ import Title from "./Title";
 
 const TESTIMONIALS = [
   {
-    name: "RONALD RICHARDS",
-    role: "Finance Advisor",
+    name: "ARJUN SHARMA",
     quote:
-      "Working with Campaign was a game-changer for our business. Their expertise and strategies helped us reach new heights we never thought possible heights we never",
+      "The consulting team helped us identify the right growth opportunities and gave us a clear strategy to move forward. Their practical guidance made a real difference to our business.",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    name: "CHARLIZE THERON",
-    role: "Ceo & Owner",
+    name: "PRIYA MENON",
     quote:
-      "Working with Campaign was a game-changer for our business. Their expertise and strategies helped us reach new heights we never thought possible heights we never",
-    avatar: "https://randomuser.me/api/portraits/men/54.jpg",
-  },
-  {
-    name: "MARVIN MCKINNEY",
-    role: "Product Manager",
-    quote:
-      "Working with Campaign was a game-changer for our business. Their expertise and strategies helped us reach new heights we never thought possible heights we never",
-    avatar: "https://randomuser.me/api/portraits/men/78.jpg",
-  },
-  {
-    name: "ESTHER HOWARD",
-    role: "Marketing Lead",
-    quote:
-      "Working with Campaign was a game-changer for our business. Their expertise and strategies helped us reach new heights we never thought possible heights we never",
+      "Their strategic consulting completely changed the way we approached our business. We gained clarity, improved our decision-making, and started seeing measurable results.",
     avatar: "https://randomuser.me/api/portraits/women/65.jpg",
   },
   {
-    name: "DARLENE ROBERTSON",
-    role: "Operations Head",
+    name: "ROHIT VERMA",
     quote:
-      "Working with Campaign was a game-changer for our business. Their expertise and strategies helped us reach new heights we never thought possible heights we never",
+      "What impressed me most was their ability to understand our challenges and turn them into practical solutions. The guidance we received was clear, focused, and highly valuable.",
+    avatar: "https://randomuser.me/api/portraits/men/78.jpg",
+  },
+  {
+    name: "ANANYA IYER",
+    quote:
+      "The consulting process gave our team a much clearer direction. From strategy to execution, their insights helped us make smarter decisions and build a stronger foundation for growth.",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    name: "VIKRAM RAO",
+    quote:
+      "Their expertise and structured approach helped us solve complex business challenges with confidence. We now have a clear roadmap and a much better understanding of where to focus.",
+    avatar: "https://randomuser.me/api/portraits/men/54.jpg",
   },
 ];
 

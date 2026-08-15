@@ -7,6 +7,7 @@ import StatsCounter from "../Components/Statscounter";
 import WorkingProcess from "../Components/Workingprocess";
 import Testimonials from "../Components/Testimonials";
 import Footer from "../Components/Footer";
+import { Link } from "react-router-dom";
 
 function useCountUp(target, { duration = 5000, decimals = 0 } = {}) {
   const [value, setValue] = useState(0);
@@ -185,8 +186,9 @@ export default function Hero() {
               every visitor enjoys a seamless intuitive.
             </p>
 
-            <button
-              className="
+            <Link to="/contact-us">
+              <button
+                className="
               mt-8
               md:mt-4
               rounded-full
@@ -202,9 +204,10 @@ export default function Hero() {
               hover:bg-white
               hover:text-black
             "
-            >
-              Let's Get In Touch
-            </button>
+              >
+                Let's Get In Touch
+              </button>
+            </Link>
           </div>
 
           {/* ------------------------------------------------

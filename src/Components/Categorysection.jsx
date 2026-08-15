@@ -28,32 +28,14 @@ const CATEGORIES = [
 // Swap this out for real per-category data / an API call.
 const SAMPLE_PROFESSIONALS = [
   {
-    name: "Frank Sondors",
+    name: "Kannan R",
     avatar:
       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=100&q=80",
-    tagline: "Meet Frank - Salesforge.ai",
+    tagline: "Certified Analyst",
     description: "Book a meeting with me for 30 minutes!",
     price: "Free",
     rating: null,
-  },
-  {
-    name: "Frank Sondors",
-    avatar:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=100&q=80",
-    tagline: "Meet Frank - Salesforge.ai",
-    description: "Book a meeting with me for 15 minutes!",
-    price: "Free",
-    rating: null,
-  },
-  {
-    name: "MarketXLS",
-    avatar:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=100&q=80",
-    tagline: "MarketXLS - Demo",
-    description: null,
-    price: "Free",
-    rating: { score: 4.8, count: 5 },
-  },
+  }
 ];
 
 export default function CategorySection() {

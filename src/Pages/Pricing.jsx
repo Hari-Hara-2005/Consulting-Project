@@ -3,6 +3,7 @@ import PageTitleBanner from "../Components/Pagetitlebanner";
 import FaqSection from "../Components/FaqSection";
 import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
+import { IndianRupee } from "lucide-react";
 
 const CheckIcon = ({ color }) => (
   <svg
@@ -13,11 +14,7 @@ const CheckIcon = ({ color }) => (
     stroke="currentColor"
     strokeWidth={3}
   >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M5 13l4 4L19 7"
-    />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
   </svg>
 );
 
@@ -86,15 +83,16 @@ function PricingCard({
         </p>
 
         <p
-          className="text-6xl font-extrabold leading-none mb-6"
+          className="text-5xl font-extrabold leading-none mb-6 flex items-baseline"
           style={{
             color: highlighted ? "#FFFFFF" : "#0A0A0A",
           }}
         >
-          ${price}
+          <IndianRupee size={38} strokeWidth={3} className="mr-1 shrink-0" />
+          {price}
 
           <span
-            className="text-base font-medium align-baseline ml-1"
+            className="text-base font-medium ml-2"
             style={{
               color: highlighted ? "#D6D6D6" : "#6B6B6B",
             }}
@@ -116,7 +114,6 @@ function PricingCard({
             text-[#C9A227]
             transition-all
             duration-300
-            hover:text-[#FFFFFF]
             hover:gap-3
           "
         >
@@ -129,9 +126,7 @@ function PricingCard({
       <div
         className="hidden sm:block w-px self-stretch"
         style={{
-          backgroundColor: highlighted
-            ? "rgba(255,255,255,0.15)"
-            : "#E5E5E5",
+          backgroundColor: highlighted ? "rgba(255,255,255,0.15)" : "#E5E5E5",
         }}
       />
 
@@ -146,9 +141,7 @@ function PricingCard({
           <React.Fragment key={i}>
             {/* Left Feature */}
             <div className="flex items-center gap-2.5">
-              <CheckIcon
-                color={highlighted ? "#F7BD02" : "#F7BD02"}
-              />
+              <CheckIcon color={highlighted ? "#F7BD02" : "#F7BD02"} />
 
               <span
                 style={{
@@ -161,9 +154,7 @@ function PricingCard({
 
             {/* Right Feature */}
             <div className="flex items-center gap-2.5">
-              <CheckIcon
-                color={highlighted ? "#F7BD02" : "#F7BD02"}
-              />
+              <CheckIcon color={highlighted ? "#F7BD02" : "#F7BD02"} />
 
               <span
                 style={{
@@ -201,7 +192,6 @@ export default function Pricing() {
       {/* Pricing Section */}
       <section className="bg-white py-20 px-6 md:px-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[420px_1fr] gap-16 items-start">
-
           {/* Left column */}
           <div
             className="lg:sticky lg:top-20"
@@ -256,7 +246,6 @@ export default function Pricing() {
 
           {/* Right column - pricing cards */}
           <div className="flex flex-col gap-6">
-
             <PricingCard
               packageName="Basic Package"
               price="399"
@@ -288,7 +277,10 @@ export default function Pricing() {
               delay={300}
               features={[
                 ["Liability overview", "Concentration-risk observations"],
-                ["Personal/business asset separation", "High-level wealth-structure observations"],
+                [
+                  "Personal/business asset separation",
+                  "High-level wealth-structure observations",
+                ],
                 ["Distribution channels", "Marketing strategy"],
               ]}
             />
@@ -297,11 +289,7 @@ export default function Pricing() {
       </section>
 
       {/* FAQ */}
-      <div
-        data-aos="fade-up"
-        data-aos-duration="900"
-        data-aos-offset="120"
-      >
+      <div data-aos="fade-up" data-aos-duration="900" data-aos-offset="120">
         <FaqSection />
       </div>
 

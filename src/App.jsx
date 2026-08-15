@@ -11,6 +11,7 @@ import CustomCursor from "./Components/Customcursor";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import TermsAndConditions from "./Pages/Terms&Conditions/Terms&Conditions";
 const App = () => {
   useEffect(() => {
     AOS.init({ once: false }); // once: true = only animate on first scroll into view
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact-us" element={<Contact />} />
+        <Route path="/terms-conditions" element={<TermsAndConditions />}></Route>
       </Routes>
     </BrowserRouter>
   );

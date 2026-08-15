@@ -54,7 +54,7 @@ function buildTimeSlots(
   return slots;
 }
 
-const TIME_SLOTS = buildTimeSlots(11, 30, 20, 30, 30);
+const TIME_SLOTS = buildTimeSlots(10, 30, 20, 30, 30);
 
 const MONTH_NAMES = [
   "January",
