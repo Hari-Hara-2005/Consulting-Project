@@ -14,7 +14,7 @@ export default function PageTitleBanner({ title, breadcrumbs }) {
   }, []);
 
   return (
-    <section className="relative bg-[#0d2b26] px-6 overflow-hidden min-h-[60vh] py-10 flex flex-col">
+    <section className="relative bg-black px-6 overflow-hidden min-h-[60vh] py-10 flex flex-col">
       {/* Navbar */}
       <div data-aos="fade-down" data-aos-duration="800">
         <Navbar />
@@ -66,13 +66,13 @@ export default function PageTitleBanner({ title, breadcrumbs }) {
                 )}
 
                 {crumb.active ? (
-                  <span className="text-[#a9d18e] font-medium">
+                  <span className="text-[#f7bd02] font-medium">
                     {crumb.label}
                   </span>
                 ) : (
                   <a
                     href={crumb.href}
-                    className="text-white hover:text-[#a9d18e] transition-colors duration-300"
+                    className="text-white hover:text-yellow-700 transition-colors duration-300"
                   >
                     {crumb.label}
                   </a>

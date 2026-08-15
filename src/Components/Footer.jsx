@@ -1,24 +1,81 @@
+import { Link } from "react-router-dom";
+
 const FOOTER_COLUMNS = [
   {
     title: "Features",
     links: [
-      "Advanced Analytics",
-      "Data Exploration",
-      "Auto Track",
-      "Data Insights",
+      {
+        name: "Advanced Analytics",
+        path: "/advanced-analytics",
+      },
+      {
+        name: "Data Exploration",
+        path: "/data-exploration",
+      },
+      {
+        name: "Auto Track",
+        path: "/auto-track",
+      },
+      {
+        name: "Data Insights",
+        path: "/data-insights",
+      },
     ],
   },
   {
     title: "Menu",
-    links: ["Article & Blog", "Documentation", "Learn Gulaly", "Tutorials"],
+    links: [
+      {
+        name: "Article & Blog",
+        path: "/blog",
+      },
+      {
+        name: "Documentation",
+        path: "/documentation",
+      },
+      {
+        name: "Learn Gulaly",
+        path: "/learn-gulaly",
+      },
+      {
+        name: "Tutorials",
+        path: "/tutorials",
+      },
+    ],
   },
   {
     title: "Company",
-    links: ["About Us", "Our Team", "Press"],
+    links: [
+      {
+        name: "About Us",
+        path: "/about",
+      },
+      {
+        name: "Our Team",
+        path: "/team",
+      },
+    ],
   },
   {
     title: "Resources",
-    links: ["Blog and Article", "Community", "Documentation", "Tutorials"],
+    links: [
+      {
+        name: "Blog and Article",
+        path: "/blog",
+      },
+      {
+        name: "Community",
+        path: "/community",
+      },
+      {
+        name: "Documentation",
+        path: "/documentation",
+      },
+      {
+        name: "Tutorials",
+        path: "/tutorials",
+      },
+    ],
   },
 ];
 
@@ -43,41 +100,98 @@ const SOCIALS = [
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <footer className="relative bg-[#0d2b26] px-6 pt-16 pb-8">
+    <footer className="relative bg-black px-6 pt-16 pb-8">
       <div className="max-w-6xl mx-auto">
         {/* Top: logo + description + socials */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-10">
-          <div className="max-w-md">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-7 h-7 rounded-full bg-[conic-gradient(from_180deg,#a9d18e,#F75709,#a9d18e)] flex items-center justify-center">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0d2b26]" />
+          <div
+            className="flex items-center gap-2"
+            data-aos="fade-right"
+            data-aos-duration="600"
+            data-aos-once="true"
+          >
+            {/* Logo */}
+ <div
+  className="
+    shrink-0
+    flex
+    items-center
+    justify-center
+    bg-white
+    rounded-xl
+    p-[3px]
+    border
+    border-white
+  "
+>
+  <img
+    src="/assets/LV.tuxpi.png"
+    alt="Legacy Vault Logo"
+    className="
+      h-8
+      sm:h-9
+      w-auto
+      object-contain
+      rounded-lg
+    "
+  />
+</div>
+
+            {/* Brand Name + Tagline */}
+            <div>
+              <span
+                className="
+        block
+        font-black
+        text-white
+        text-lg
+        sm:text-xl
+        uppercase
+        tracking-wide
+        leading-tight
+      "
+              >
+                Legacy Vault
               </span>
-              <span className="font-black text-white text-xl uppercase tracking-wide">
-                Prozen
-              </span>
+
+              {/* Hidden on laptop and above */}
+              <p
+                className="
+        mt-0.5
+        text-[#C9A227]
+        font-semibold
+        text-[8px]
+        sm:text-[9px]
+        leading-tight
+        tracking-wide
+        uppercase
+      "
+              >
+                Excellence in every financial decision
+              </p>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
-              At the core of our ethos lies a dedication to our clients. Your
-              success is our shared triumph, and we're.
-            </p>
           </div>
 
+          {/* Social Icons */}
           <div className="flex items-center gap-3">
             {SOCIALS.map((social) => (
               <a
                 key={social.label}
                 href="#"
                 aria-label={social.label}
-                className="w-10 h-10 rounded-lg bg-white/10 hover:bg-[#F75709] flex items-center justify-center transition-colors duration-300"
+                className="w-10 h-10 rounded-lg bg-white  hover:bg-[#f7bd02] text-black flex items-center justify-center transition-colors duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-4 h-4 fill-white"
+                  className="w-4 h-4 fill-black"
                 >
                   <path d={social.path} />
                 </svg>
@@ -86,24 +200,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="h-px bg-white/10 mb-12" />
+        <div className="h-px bg-yellow-500 mb-12" />
 
         {/* Link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-40 mb-12">
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
               <h4 className="font-black text-white uppercase text-base mb-5 tracking-wide">
                 {col.title}
               </h4>
-              <ul className="space-y-3 text-white/60 text-sm">
+
+              <ul className="space-y-3 text-white font-semibold text-sm">
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="hover:text-[#F75709] transition-colors duration-300"
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className="hover:text-[#f7bd02] transition-colors duration-300"
                     >
-                      {link}
-                    </a>
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -112,10 +227,23 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="h-px bg-white/10 mb-6" />
-        <div className="text-center text-white/70 text-sm">
-          &copy;2025<span className="text-[#F75709]">Hurraytheme</span>. All
-          rights reserved.
+        <div className="h-px bg-yellow-500 mb-6" />
+
+        <div className="text-center font-bold text-white text-sm">
+          &copy;2026
+          <span className="text-[#f7bd02]">LegacyVault</span>. All rights
+          reserved.
+        </div>
+
+        <div className="text-white  text-sm text-center">
+          <a
+            href="https://kudanthaiinfotech.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-bold text-white transition-colors hover:text-white"
+          >
+            Developed by Kudanthai Infotech
+          </a>
         </div>
       </div>
 

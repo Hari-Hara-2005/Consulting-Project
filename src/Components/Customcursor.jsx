@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 // Theme
-const ACCENT = "#F75709";
+const ACCENT = "#f7bd02";
 
 export default function CustomCursor() {
   const dotRef = useRef(null);

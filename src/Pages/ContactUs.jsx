@@ -2,7 +2,7 @@ import { useState } from "react";
 import PageTitleBanner from "../Components/Pagetitlebanner";
 import {
   Phone,
-  MessageSquare,
+  MailCheck,
   MapPin,
   ArrowUp,
   ExternalLink,
@@ -12,34 +12,25 @@ import {
 } from "lucide-react";
 import Footer from "../Components/Footer";
 
-const THEME = {
-  primary: "#063231",
-  dark: "#111111",
-  cardBg: "#F5F6F5",
-  iconBg: "#FBE4DA",
-  accent: "#F75709",
-  bg: "#F3F4F2",
-};
-
 const CONTACT_ITEMS = [
   {
     icon: Phone,
     label: "Phone number",
-    value: "+44 204 577 0077",
+    value: "+91 93459 69545",
   },
   {
-    icon: MessageSquare,
+    icon: MailCheck,
     label: "Email address",
-    value: "prozen@gmail.com",
+    value: "legacyvault@gmail.com",
   },
   {
     icon: MapPin,
     label: "Office Address",
-    value: "Washington Ave, NY",
+    value: "Kumbakonam, TN",
   },
 ];
 
-const CONTACT_WHATSAPP_NUMBER = "9952857016";
+const CONTACT_WHATSAPP_NUMBER = "9345969545";
 
 const SUBJECT_OPTIONS = [
   "General inquiry",
@@ -50,11 +41,11 @@ const SUBJECT_OPTIONS = [
 ];
 
 const LOCATION = {
-  name: "BNS Center",
-  address: "Sector 7, Dhaka 1230",
+  name: "LV Center",
+  address: "Kumbakonam",
   rating: 4.0,
   reviewCount: "6,406",
-  mapQuery: "BNS Center, Sector 7, Dhaka 1230",
+  mapQuery: "LV Center, Kumbakonam",
 };
 
 const Contact = () => {
@@ -89,7 +80,7 @@ const Contact = () => {
       `Message:\n${form.message}`;
 
     const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      text,
+      text
     )}`;
 
     window.open(waLink, "_blank");
@@ -103,15 +94,15 @@ const Contact = () => {
   };
 
   const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    LOCATION.mapQuery,
+    LOCATION.mapQuery
   )}&output=embed`;
 
   const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    LOCATION.mapQuery,
+    LOCATION.mapQuery
   )}`;
 
   const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-    LOCATION.mapQuery,
+    LOCATION.mapQuery
   )}`;
 
   return (
@@ -139,27 +130,43 @@ const Contact = () => {
               data-aos-duration="900"
               data-aos-delay={index * 150}
               className="group rounded-2xl p-6 md:p-7 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
-              style={{ backgroundColor: THEME.cardBg }}
+              style={{
+                backgroundColor: "#F7F7F7",
+              }}
             >
               {/* Icon */}
               <div
                 data-aos="zoom-in"
                 data-aos-delay={index * 150 + 150}
                 className="w-14 h-14 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300"
-                style={{ backgroundColor: THEME.iconBg }}
+                style={{
+                  backgroundColor: "#f7bd02",
+                }}
               >
-                <Icon className="w-6 h-6" style={{ color: THEME.primary }} />
+                <Icon
+                  className="w-6 h-6"
+                  style={{
+                    color: "#0A0A0A",
+                  }}
+                />
               </div>
 
               {/* Label */}
-              <p className="text-sm mb-1.5" style={{ color: THEME.primary }}>
+              <p
+                className="text-md font-extrabold mb-1.5"
+                style={{
+                  color: "#f7bd02",
+                }}
+              >
                 {label}
               </p>
 
               {/* Value */}
               <p
                 className="text-lg font-bold uppercase tracking-wide"
-                style={{ color: THEME.primary }}
+                style={{
+                  color: "#0A0A0A",
+                }}
               >
                 {value}
               </p>
@@ -169,7 +176,11 @@ const Contact = () => {
       </div>
 
       {/* Contact Form + Map */}
-      <section style={{ backgroundColor: THEME.bg }}>
+      <section
+        style={{
+          backgroundColor: "#FAFAFA",
+        }}
+      >
         {/* Form Section */}
         <div className="px-6 py-16 md:py-20">
           <div
@@ -181,8 +192,10 @@ const Contact = () => {
             <p
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-xs md:text-sm font-bold tracking-wide uppercase mb-3"
-              style={{ color: THEME.accent }}
+              className="text-xs md:text-xl font-extrabold tracking-wide uppercase mb-3"
+              style={{
+                color: "#f7bd02",
+              }}
             >
               Contact us
             </p>
@@ -192,7 +205,9 @@ const Contact = () => {
               data-aos="fade-up"
               data-aos-delay="200"
               className="uppercase font-black leading-tight text-3xl md:text-4xl mb-10"
-              style={{ color: THEME.dark }}
+              style={{
+                color: "#111111",
+              }}
             >
               Have questions?
               <br />
@@ -209,7 +224,7 @@ const Contact = () => {
                   placeholder="Your name"
                   data-aos="fade-right"
                   data-aos-delay="300"
-                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
+                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#f7bd02] transition-all duration-300"
                 />
 
                 <input
@@ -219,7 +234,7 @@ const Contact = () => {
                   placeholder="Email address"
                   data-aos="fade-left"
                   data-aos-delay="300"
-                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
+                  className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#f7bd02] transition-all duration-300"
                 />
               </div>
 
@@ -229,9 +244,9 @@ const Contact = () => {
                 onChange={handleChange("subject")}
                 data-aos="fade-up"
                 data-aos-delay="400"
-                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none appearance-none focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
+                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none appearance-none focus:ring-2 focus:ring-[#f7bd02] transition-all duration-300"
                 style={{
-                  color: form.subject ? THEME.dark : "#6b7280",
+                  color: form.subject ? "#111111" : "#6b7280",
                 }}
               >
                 <option value="" disabled>
@@ -239,7 +254,13 @@ const Contact = () => {
                 </option>
 
                 {SUBJECT_OPTIONS.map((opt) => (
-                  <option key={opt} value={opt} style={{ color: THEME.dark }}>
+                  <option
+                    key={opt}
+                    value={opt}
+                    style={{
+                      color: "#111111",
+                    }}
+                  >
                     {opt}
                   </option>
                 ))}
@@ -253,7 +274,7 @@ const Contact = () => {
                 rows={6}
                 data-aos="fade-up"
                 data-aos-delay="500"
-                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none resize-y placeholder:text-gray-500 focus:ring-2 focus:ring-[#F75709]/20 transition-all duration-300"
+                className="w-full bg-white rounded-md px-4 py-3.5 text-sm outline-none resize-y placeholder:text-gray-500 focus:ring-2 focus:ring-[#f7bd02] transition-all duration-300"
               />
             </div>
 
@@ -263,9 +284,9 @@ const Contact = () => {
               disabled={!isValid}
               data-aos="zoom-in"
               data-aos-delay="600"
-              className="mt-8 uppercase text-sm font-bold text-white px-8 py-3.5 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
+              className="mt-8 uppercase text-sm font-bold text-black px-8 py-3.5 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
               style={{
-                backgroundColor: THEME.accent,
+                backgroundColor: "#f7bd02",
               }}
             >
               Send message here
@@ -295,7 +316,12 @@ const Contact = () => {
             className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg px-4 py-3 max-w-xs"
           >
             <div className="flex items-start justify-between gap-2">
-              <p className="text-sm font-bold" style={{ color: THEME.dark }}>
+              <p
+                className="text-sm font-bold"
+                style={{
+                  color: "#111111",
+                }}
+              >
                 {LOCATION.name}
               </p>
 
@@ -309,7 +335,9 @@ const Contact = () => {
                 >
                   <ExternalLink
                     className="w-3 h-3"
-                    style={{ color: THEME.dark }}
+                    style={{
+                      color: "#111111",
+                    }}
                   />
                 </a>
 
@@ -320,7 +348,7 @@ const Contact = () => {
                   aria-label="Get directions"
                   className="w-6 h-6 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
                   style={{
-                    backgroundColor: THEME.accent,
+                    backgroundColor: "#C9A227",
                   }}
                 >
                   <Navigation className="w-3 h-3 text-white" />
@@ -328,18 +356,25 @@ const Contact = () => {
               </div>
             </div>
 
-            <p className="text-xs text-gray-500 mt-0.5">{LOCATION.address}</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              {LOCATION.address}
+            </p>
 
             <div className="flex items-center gap-1 mt-1.5 text-xs">
-              <span className="font-medium" style={{ color: THEME.dark }}>
+              <span
+                className="font-medium"
+                style={{
+                  color: "#111111",
+                }}
+              >
                 {LOCATION.rating.toFixed(1)}
               </span>
 
               <Star
                 className="w-3 h-3"
                 style={{
-                  color: THEME.accent,
-                  fill: THEME.accent,
+                  color: "#C9A227",
+                  fill: "#C9A227",
                 }}
               />
 
@@ -364,7 +399,7 @@ const Contact = () => {
             data-aos-delay="500"
             className="absolute bottom-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 hover:-translate-y-1 transition-all duration-300"
             style={{
-              backgroundColor: THEME.accent,
+              backgroundColor: "#C9A227",
             }}
           >
             <ArrowUp className="w-4 h-4 text-white" />

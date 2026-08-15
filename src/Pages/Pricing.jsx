@@ -2,13 +2,7 @@ import React from "react";
 import PageTitleBanner from "../Components/Pagetitlebanner";
 import FaqSection from "../Components/FaqSection";
 import Footer from "../Components/Footer";
-
-// Theme
-const THEME = {
-  primary: "#063231",
-  secondary: "#C3DF94",
-  accent: "#F75709",
-};
+import { Link } from "react-router-dom";
 
 const CheckIcon = ({ color }) => (
   <svg
@@ -19,7 +13,11 @@ const CheckIcon = ({ color }) => (
     stroke="currentColor"
     strokeWidth={3}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M5 13l4 4L19 7"
+    />
   </svg>
 );
 
@@ -45,7 +43,13 @@ const FEATURES = [
   ["Tracking sheets", "Private client portal"],
 ];
 
-function PricingCard({ highlighted = false, delay = 0 }) {
+function PricingCard({
+  highlighted = false,
+  delay = 0,
+  packageName = "Basic Package",
+  price = "299",
+  features = [],
+}) {
   return (
     <div
       data-aos="fade-left"
@@ -56,12 +60,12 @@ function PricingCard({ highlighted = false, delay = 0 }) {
       style={
         highlighted
           ? {
-              backgroundColor: THEME.primary,
-              borderColor: THEME.primary,
+              backgroundColor: "#0A0A0A",
+              borderColor: "#0A0A0A",
             }
           : {
-              backgroundColor: "#ffffff",
-              borderColor: "#e2e8f0",
+              backgroundColor: "#FFFFFF",
+              borderColor: "#E5E5E5",
             }
       }
     >
@@ -75,44 +79,59 @@ function PricingCard({ highlighted = false, delay = 0 }) {
         <p
           className="text-lg mb-1"
           style={{
-            color: highlighted ? THEME.secondary : THEME.primary,
+            color: highlighted ? "#F7BD02" : "#0A0A0A",
           }}
         >
-          Basic Package
+          {packageName}
         </p>
 
         <p
           className="text-6xl font-extrabold leading-none mb-6"
           style={{
-            color: highlighted ? "#ffffff" : THEME.primary,
+            color: highlighted ? "#FFFFFF" : "#0A0A0A",
           }}
         >
-          $199
+          ${price}
+
           <span
             className="text-base font-medium align-baseline ml-1"
             style={{
-              color: highlighted ? "#cbd5c9" : "#64748b",
+              color: highlighted ? "#D6D6D6" : "#6B6B6B",
             }}
           >
             /month
           </span>
         </p>
 
-        <a
-          href="#"
-          className="inline-flex items-center gap-1.5 font-semibold text-sm transition-all duration-300 hover:gap-3 hover:opacity-80"
-          style={{ color: THEME.accent }}
+        <Link
+          to="/contact-us"
+          className="
+            inline-flex
+            items-center
+            gap-2
+            text-sm
+            font-bold
+            uppercase
+            tracking-wide
+            text-[#C9A227]
+            transition-all
+            duration-300
+            hover:text-[#FFFFFF]
+            hover:gap-3
+          "
         >
-          READ MORE
+          Read More
           <ArrowIcon />
-        </a>
+        </Link>
       </div>
 
       {/* Divider */}
       <div
         className="hidden sm:block w-px self-stretch"
         style={{
-          backgroundColor: highlighted ? "rgba(255,255,255,0.15)" : "#e2e8f0",
+          backgroundColor: highlighted
+            ? "rgba(255,255,255,0.15)"
+            : "#E5E5E5",
         }}
       />
 
@@ -123,29 +142,35 @@ function PricingCard({ highlighted = false, delay = 0 }) {
         data-aos-duration="700"
         data-aos-delay={delay + 250}
       >
-        {FEATURES.map(([left, right], i) => (
+        {features.map((feature, i) => (
           <React.Fragment key={i}>
+            {/* Left Feature */}
             <div className="flex items-center gap-2.5">
-              <CheckIcon color={highlighted ? THEME.secondary : "#22c55e"} />
+              <CheckIcon
+                color={highlighted ? "#F7BD02" : "#F7BD02"}
+              />
 
               <span
                 style={{
-                  color: highlighted ? "#ffffff" : THEME.primary,
+                  color: highlighted ? "#FFFFFF" : "#0A0A0A",
                 }}
               >
-                {left}
+                {feature[0]}
               </span>
             </div>
 
+            {/* Right Feature */}
             <div className="flex items-center gap-2.5">
-              <CheckIcon color={highlighted ? THEME.secondary : "#22c55e"} />
+              <CheckIcon
+                color={highlighted ? "#F7BD02" : "#F7BD02"}
+              />
 
               <span
                 style={{
-                  color: highlighted ? "#ffffff" : THEME.primary,
+                  color: highlighted ? "#FFFFFF" : "#0A0A0A",
                 }}
               >
-                {right}
+                {feature[1]}
               </span>
             </div>
           </React.Fragment>
@@ -176,6 +201,7 @@ export default function Pricing() {
       {/* Pricing Section */}
       <section className="bg-white py-20 px-6 md:px-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[420px_1fr] gap-16 items-start">
+
           {/* Left column */}
           <div
             className="lg:sticky lg:top-20"
@@ -184,8 +210,8 @@ export default function Pricing() {
             data-aos-offset="150"
           >
             <p
-              className="font-bold tracking-wide text-sm mb-3"
-              style={{ color: THEME.accent }}
+              className="text-xl font-bold tracking-wide mb-3"
+              style={{ color: "#F7BD02" }}
               data-aos="fade-up"
               data-aos-duration="700"
             >
@@ -193,19 +219,17 @@ export default function Pricing() {
             </p>
 
             <h2
-              className="text-5xl font-extrabold leading-[1.05] mb-6"
-              style={{ color: THEME.primary }}
+              className="text-4xl md:text-5xl font-extrabold leading-[1.05] mb-6"
+              style={{ color: "#0A0A0A" }}
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="100"
             >
-              COACHING PACKAGES
-              <br />
-              THAT FIT YOU
+              COACHING PACKAGES THAT FIT YOU
             </h2>
 
             <p
-              className="text-slate-500 leading-relaxed mb-8"
+              className="text-yellow-500 font-semibold leading-relaxed mb-8"
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="200"
@@ -215,32 +239,69 @@ export default function Pricing() {
               organization. Whether you're seeking personal.
             </p>
 
-            <button
-              data-aos="zoom-in"
-              data-aos-duration="700"
-              data-aos-delay="300"
-              className="font-bold text-sm tracking-wide px-7 py-4 rounded-lg text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
-              style={{
-                backgroundColor: THEME.accent,
-              }}
-            >
-              GET ALL TOUCH
-            </button>
+            <Link to="/contact-us">
+              <button
+                data-aos="zoom-in"
+                data-aos-duration="700"
+                data-aos-delay="300"
+                className="font-bold text-sm tracking-wide px-7 py-4 rounded-lg text-black transition-all duration-300 hover:opacity-90 hover:-translate-y-1 hover:shadow-lg"
+                style={{
+                  backgroundColor: "#F7BD02",
+                }}
+              >
+                GET ALL TOUCH
+              </button>
+            </Link>
           </div>
 
           {/* Right column - pricing cards */}
           <div className="flex flex-col gap-6">
-            <PricingCard delay={0} />
 
-            <PricingCard highlighted delay={150} />
+            <PricingCard
+              packageName="Basic Package"
+              price="399"
+              highlighted={false}
+              delay={0}
+              features={[
+                ["Basic financial", "Asset categorization"],
+                ["Basic risk-awareness checklist", " Basic industry overview"],
+                ["Short competitor comparison", "Digital PDF report"],
+              ]}
+            />
 
-            <PricingCard delay={300} />
+            <PricingCard
+              packageName="Standard Package"
+              price="999"
+              highlighted={true}
+              delay={150}
+              features={[
+                ["Competitor business model", "Product/service categories"],
+                ["Target customer segment", "Marketing approach"],
+                ["Online presence", " Differentiation opportunities"],
+              ]}
+            />
+
+            <PricingCard
+              packageName="Premium Package"
+              price="1,999"
+              highlighted={false}
+              delay={300}
+              features={[
+                ["Liability overview", "Concentration-risk observations"],
+                ["Personal/business asset separation", "High-level wealth-structure observations"],
+                ["Distribution channels", "Marketing strategy"],
+              ]}
+            />
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <div data-aos="fade-up" data-aos-duration="900" data-aos-offset="120">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-offset="120"
+      >
         <FaqSection />
       </div>
 

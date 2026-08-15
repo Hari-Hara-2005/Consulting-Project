@@ -9,7 +9,7 @@
 /* Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #f75709 #f1f1f1;
+  scrollbar-color: #f7bd02 #f1f1f1;
 }
 
 /* Chrome, Edge, Safari */
@@ -23,13 +23,13 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #f75709;
+  background-color: #f7bd02;
   border-radius: 8px;
   border: 2px solid #f1f1f1; /* creates a little padding around the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #d94e07; /* slightly darker orange on hover */
+  background-color: #f7bd02; /* slightly darker orange on hover */
 }
 
 @layer base {
@@ -41,14 +41,29 @@ html {
     background: #f1f1f1;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: #f75709;
+    background-color: #f7bd02;
     border-radius: 8px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #d94e07;
+    background-color: #f7bd02;
   }
   html {
     scrollbar-width: thin;
-    scrollbar-color: #f75709 #f1f1f1;
+    scrollbar-color: #f7bd02 #f1f1f1;
   }
+}
+
+@keyframes floatSmooth {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-smooth {
+  animation: floatSmooth 4s ease-in-out infinite;
 }

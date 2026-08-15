@@ -1,13 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Title from "./Title";
 
-// Theme
-const THEME = {
-  primary: "#063231", // dark teal
-  secondary: "#C3DF94", // light green
-  accent: "#F75709", // orange
-};
-
 const TESTIMONIALS = [
   {
     name: "RONALD RICHARDS",
@@ -47,7 +40,11 @@ const TESTIMONIALS = [
 ];
 
 const StarIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 20 20" fill={THEME.accent}>
+  <svg
+    className="w-4 h-4"
+    viewBox="0 0 20 20"
+    fill="#C9A227"
+  >
     <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z" />
   </svg>
 );
@@ -57,13 +54,17 @@ const ChevronIcon = ({ direction = "left" }) => (
     className="w-4 h-4"
     viewBox="0 0 24 24"
     fill="none"
-    stroke={THEME.primary}
+    stroke="#0A0A0A"
     strokeWidth={2.5}
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
-      d={direction === "left" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
+      d={
+        direction === "left"
+          ? "M15 19l-7-7 7-7"
+          : "M9 5l7 7-7 7"
+      }
     />
   </svg>
 );
@@ -87,14 +88,18 @@ function TestimonialCard({ item }) {
           alt={item.name}
           className="w-12 h-12 rounded-full object-cover"
         />
+
         <div>
           <p
             className="font-bold text-sm tracking-wide"
-            style={{ color: THEME.primary }}
+            style={{ color: "#0A0A0A" }}
           >
             {item.name}
           </p>
-          <p className="text-slate-500 text-sm">{item.role}</p>
+
+          <p className="text-slate-500 text-sm">
+            {item.role}
+          </p>
         </div>
       </div>
     </div>
@@ -113,56 +118,82 @@ export default function ClientFeedback({
   // Responsive items-per-view
   useEffect(() => {
     const updatePerView = () => {
-      if (window.innerWidth < 640) setPerView(1);
-      else if (window.innerWidth < 1024) setPerView(2);
-      else setPerView(3);
+      if (window.innerWidth < 640) {
+        setPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setPerView(2);
+      } else {
+        setPerView(3);
+      }
     };
+
     updatePerView();
+
     window.addEventListener("resize", updatePerView);
-    return () => window.removeEventListener("resize", updatePerView);
+
+    return () =>
+      window.removeEventListener("resize", updatePerView);
   }, []);
 
-  const maxIndex = Math.max(0, TESTIMONIALS.length - perView);
-
-  // Clamp index whenever perView changes
-  // useEffect(() => {
-  //   setIndex((prev) => Math.min(prev, maxIndex));
-  // }, [maxIndex]);
+  const maxIndex = Math.max(
+    0,
+    TESTIMONIALS.length - perView
+  );
 
   const goNext = useCallback(() => {
-    setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    setIndex((prev) =>
+      prev >= maxIndex ? 0 : prev + 1
+    );
   }, [maxIndex]);
 
   const goPrev = useCallback(() => {
-    setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+    setIndex((prev) =>
+      prev <= 0 ? maxIndex : prev - 1
+    );
   }, [maxIndex]);
 
   // Autoplay
   useEffect(() => {
     if (!autoplay || isPaused) return;
-    timerRef.current = setInterval(goNext, autoplayInterval);
-    return () => clearInterval(timerRef.current);
-  }, [autoplay, isPaused, autoplayInterval, goNext]);
+
+    timerRef.current = setInterval(
+      goNext,
+      autoplayInterval
+    );
+
+    return () =>
+      clearInterval(timerRef.current);
+  }, [
+    autoplay,
+    isPaused,
+    autoplayInterval,
+    goNext,
+  ]);
 
   const slideWidthPct = 100 / perView;
 
   return (
     <section
       className="py-16 sm:py-20 px-6 md:px-16"
-      style={{ backgroundColor: "#f4f6f4" }}
+      style={{ backgroundColor: "#F5F5F5" }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className="max-w-7xl mx-auto">
+
         {/* Header */}
         <div className="flex items-end justify-between mb-10 flex-wrap gap-6">
-          <div data-aos="fade-right" data-aos-duration="600">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="600"
+          >
             <Title
               align="left"
               subtitle="TESTIMONIALS"
               title={<>Client feedback</>}
             />
           </div>
+
           {/* Arrows */}
           <div
             className="flex items-center gap-3"
@@ -176,10 +207,11 @@ export default function ClientFeedback({
             >
               <ChevronIcon direction="left" />
             </button>
+
             <button
               onClick={goNext}
               aria-label="Next testimonials"
-              className="w-11 h-11 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
+              className="w-11 h-11 rounded-full bg-[#f7bd02] border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
             >
               <ChevronIcon direction="right" />
             </button>
@@ -191,14 +223,18 @@ export default function ClientFeedback({
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{
-              transform: `translateX(-${index * slideWidthPct}%)`,
+              transform: `translateX(-${
+                index * slideWidthPct
+              }%)`,
             }}
           >
             {TESTIMONIALS.map((item, i) => (
               <div
                 key={i}
                 className="shrink-0 px-3"
-                style={{ width: `${slideWidthPct}%` }}
+                style={{
+                  width: `${slideWidthPct}%`,
+                }}
                 data-aos="fade-up"
                 data-aos-delay={i * 100}
                 data-aos-duration="600"
@@ -216,15 +252,21 @@ export default function ClientFeedback({
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+          {Array.from({
+            length: maxIndex + 1,
+          }).map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Go to slide ${i + 1}`}
               className="h-2 rounded-full transition-all duration-300"
               style={{
-                width: index === i ? "24px" : "8px",
-                backgroundColor: index === i ? THEME.accent : "#d4d8d3",
+                width:
+                  index === i ? "24px" : "8px",
+                backgroundColor:
+                  index === i
+                    ? "#C9A227"
+                    : "#f7bd02",
               }}
             />
           ))}

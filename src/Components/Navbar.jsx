@@ -30,9 +30,9 @@ function NavLinkItem({ label, to, onClick, mobile, delay }) {
             font-bold
             tracking-[0.03em]
             uppercase
-            text-[#0d3b34]
+            text-black
             transition-colors
-            hover:text-[#f36f21]
+            hover:text-[#f7bd02]
           `
           : `
             flex items-center
@@ -41,10 +41,10 @@ function NavLinkItem({ label, to, onClick, mobile, delay }) {
             font-bold
             tracking-[0.03em]
             uppercase
-            text-[#0d3b34]
+            text-black
             transition-colors
             hover:bg-transparent
-            hover:text-[#f36f21]
+            hover:text-[#f7bd02]
           `
       }
     >
@@ -56,49 +56,61 @@ function NavLinkItem({ label, to, onClick, mobile, delay }) {
 function Logo() {
   return (
     <div
-      className="flex items-center gap-2"
-      data-aos="fade-right"
-      data-aos-duration="600"
-      data-aos-once="true"
-    >
-      <div
-        className="
-          relative
-          flex
-          h-8
-          w-8
-          items-center
-          justify-center
-          rounded-full
-          bg-[#f36f21]
-        "
-      >
-        <div
-          className="
-            flex
-            h-[22px]
-            w-[22px]
-            items-center
-            justify-center
-            rounded-full
-            bg-[#0d3b34]
-          "
-        >
-          <Circle size={9} fill="white" className="text-white" />
-        </div>
-      </div>
+  className="flex items-center gap-2"
+  data-aos="fade-right"
+  data-aos-duration="600"
+  data-aos-once="true"
+>
+  {/* Logo */}
+  <div className="shrink-0">
+    <img
+      src="/assets/LV.tuxpi.png"
+      alt="Legacy Vault Logo"
+      className="
+        w-auto
+        h-9
+        sm:h-10
+        object-contain
+        drop-shadow-[0_0_2px_#000]
+      "
+    />
+  </div>
 
+  {/* Brand Name */}
+  <div className="min-w-0">
+    <span
+      className="
+        block
+        text-[1.1rem]
+        sm:text-[1.2rem]
+        md:text-[1.3rem]
+        font-extrabold
+        tracking-[0.02em]
+        text-black
+        leading-tight
+      "
+    >
+      LEGACY VAULT
+
+      {/* Hidden on laptop (lg) and above */}
       <span
         className="
-          text-[1.3rem]
-          font-extrabold
-          tracking-[0.02em]
-          text-[#0d3b34]
+          block
+          text-[8px]
+          sm:text-[9px]
+          md:text-[10px]
+          font-semibold
+          tracking-[0.08em]
+          text-[#C9A227]
+          mt-0.5
+          
         "
       >
-        PROZEN
+        PRESERVING WEALTH. BUILDING LEGACY
       </span>
-    </div>
+    </span>
+  </div>
+</div>
   );
 }
 
@@ -194,16 +206,17 @@ export default function Navbar() {
               hidden
               lg:block
               rounded-full
-              bg-[#b7d17e]
+              bg-[#f7bd02]
               px-6
               py-3.5
               text-[0.8rem]
               font-bold
               tracking-[0.03em]
               uppercase
-              text-[#0d3b34]
+              text-black
               transition-colors
-              hover:bg-[#a3c369]
+              hover:bg-black
+              hover:text-white
             "
             >
               Let's Get In 1:1
@@ -221,10 +234,11 @@ export default function Navbar() {
               items-center
               justify-center
               rounded-full
-              bg-[#0d3b34]/5
-              text-[#0d3b34]
+              bg-[#f7bd02]
+              text-black
               transition-colors
-              hover:bg-[#0d3b34]/10
+              hover:bg-black
+              hover:text-white
               lg:hidden
             "
           >
@@ -253,27 +267,29 @@ export default function Navbar() {
                 onClick={() => setIsMobileOpen(false)}
               />
             ))}
-
-            <button
-              onClick={() => setIsMobileOpen(false)}
-              className="
+            <Link to="/service-booking">
+              <button
+                onClick={() => setIsMobileOpen(false)}
+                className="
                 mt-2
                 w-full
                 rounded-full
-                bg-[#b7d17e]
+                bg-[#f7bd02]
                 px-6
                 py-3.5
                 text-[0.8rem]
                 font-bold
                 tracking-[0.03em]
                 uppercase
-                text-[#0d3b34]
+                text-black
                 transition-colors
-                hover:bg-[#a3c369]
+                hover:bg-black
+                hover:text-white
               "
-            >
-              Let's Get In Touch
-            </button>
+              >
+                Let's Get In 1:1
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
