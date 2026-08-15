@@ -168,7 +168,6 @@ export default function Navbar() {
             lg:${isScrolled ? "px-6" : "px-3"}
           `}
         >
-          {/* Logo */}
           <Logo />
 
           {/* Desktop Navigation */}
