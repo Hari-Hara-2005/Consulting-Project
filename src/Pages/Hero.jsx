@@ -5,7 +5,6 @@ import Service from "../Components/Service";
 import AboutCompany from "../Components/Aboutcompany";
 import StatsCounter from "../Components/Statscounter";
 import WorkingProcess from "../Components/Workingprocess";
-import TeamMembers from "../Components/Teammembers";
 import Testimonials from "../Components/Testimonials";
 import Footer from "../Components/Footer";
 
@@ -515,9 +514,6 @@ export default function Hero() {
       </section>
       <section>
         <WorkingProcess />
-      </section>
-      <section>
-        <TeamMembers />
       </section>
       <section>
         <Testimonials />
