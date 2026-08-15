@@ -17,9 +17,9 @@ import PageTitleBanner from "../Components/Pagetitlebanner";
 import Footer from "../Components/Footer";
 
 const THEME = {
-  primary: "#063231",
-  secondary: "#C3DF94",
-  accent: "#F75709",
+  primary: "#000",
+  secondary: "#000",
+  accent: "#f7bd02",
 };
 
 // Replace with the real WhatsApp number that should receive booking requests
@@ -107,7 +107,7 @@ export default function BookingPage() {
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [selectedDate, setSelectedDate] = useState(
-    new Date(today.getFullYear(), today.getMonth(), 12),
+    new Date(today.getFullYear(), today.getMonth(), today.getDate()),
   );
   const [viewMode, setViewMode] = useState("calendar"); // 'calendar' | 'list'
   const [showMutual, setShowMutual] = useState(false);
@@ -262,7 +262,6 @@ export default function BookingPage() {
               >
                 <Globe className="w-4 h-4" />
                 Asia/Calcutta
-                <ChevronRight className="w-3.5 h-3.5 rotate-90" />
               </div>
 
               <div className="flex items-center gap-4">
@@ -668,15 +667,6 @@ export default function BookingPage() {
                     />
                   </div>
                 </div>
-
-                <button
-                  type="button"
-                  className="text-sm font-medium hover:underline"
-                  style={{ color: THEME.accent }}
-                >
-                  + Invite guests
-                </button>
-
                 <div>
                   <label
                     className="block text-sm font-medium mb-1.5"

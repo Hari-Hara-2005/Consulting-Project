@@ -118,8 +118,8 @@ export default function Footer() {
             data-aos-once="true"
           >
             {/* Logo */}
- <div
-  className="
+            <div
+              className="
     shrink-0
     flex
     items-center
@@ -130,19 +130,19 @@ export default function Footer() {
     border
     border-white
   "
->
-  <img
-    src="/assets/LV.tuxpi.png"
-    alt="Legacy Vault Logo"
-    className="
+            >
+              <img
+                src="/assets/LV.tuxpi.png"
+                alt="Legacy Vault Logo"
+                className="
       h-8
       sm:h-9
       w-auto
       object-contain
       rounded-lg
     "
-  />
-</div>
+              />
+            </div>
 
             {/* Brand Name + Tagline */}
             <div>
@@ -231,8 +231,7 @@ export default function Footer() {
 
         <div className="text-center font-bold text-white text-sm">
           &copy;2026
-          <span className="text-[#f7bd02]">LegacyVault</span>. All rights
-          reserved.
+          <span className="text-[#fff]"> LegacyVault</span>.All rights reserved.
         </div>
 
         <div className="text-white  text-sm text-center">
@@ -240,7 +239,7 @@ export default function Footer() {
             href="https://kudanthaiinfotech.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-bold text-white transition-colors hover:text-white"
+            className="text-xs font-bold text-[#f7bd02] transition-colors hover:text-white"
           >
             Developed by Kudanthai Infotech
           </a>
@@ -251,7 +250,7 @@ export default function Footer() {
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-[#F75709] hover:bg-[#0d2b26] border-2 border-transparent hover:border-[#F75709] flex items-center justify-center shadow-lg transition-colors duration-300 z-50"
+        className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-[#f7bd02] hover:bg-[#000] border-2 border-transparent hover:border-[#f7bd02] flex items-center justify-center shadow-lg transition-colors duration-300 z-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
