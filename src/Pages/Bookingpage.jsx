@@ -24,7 +24,7 @@ const THEME = {
 
 // Replace with the real WhatsApp number that should receive booking requests
 // Format: countrycode + number, no + or spaces (e.g. India number below is a placeholder)
-const HOST_WHATSAPP_NUMBER = "9952857016";
+const HOST_WHATSAPP_NUMBER = "9345969545";
 
 const HOST = {
   meetingTitle: "Mentorship Meeting",
